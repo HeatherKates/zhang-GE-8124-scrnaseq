@@ -1,0 +1,625 @@
+Jul-28 08:11:11.939 [main] DEBUG nextflow.cli.Launcher - $> nextflow run nf-core/scrnaseq -profile singularity --input samplesheet.gexcmo.csv --gex_cmo_set cmo_reference.csv --cellranger_multi_barcodes barcode_sheet.csv -c nextflow.config --fasta /orange/cancercenter-dept/GENOMES/GENOMES/references/Mus_musculus/Ensembl/GRCm39/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa --gtf /orange/cancercenter-dept/GENOMES/GENOMES/references/Mus_musculus/Ensembl/GRCm39/Mus_musculus.GRCm39.111.gtf --outdir OUTPUT_GEXCMO --aligner cellrangermulti --protocol auto -resume
+Jul-28 08:11:12.046 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.6
+Jul-28 08:11:12.113 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/hkates/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.1,nf-k8s@1.0.0,nf-tower@1.11.4,nf-wave@1.12.1
+Jul-28 08:11:12.148 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-28 08:11:12.149 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-28 08:11:12.151 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Jul-28 08:11:12.167 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-28 08:11:12.187 [main] DEBUG nextflow.scm.ProviderConfig - Using SCM config path: /home/hkates/.nextflow/scm
+Jul-28 08:11:12.957 [main] DEBUG nextflow.scm.AssetManager - Git config: /home/hkates/.nextflow/assets/nf-core/scrnaseq/.git/config; branch: master; remote: origin; url: https://github.com/nf-core/scrnaseq.git
+Jul-28 08:11:12.995 [main] DEBUG nextflow.scm.RepositoryFactory - Found Git repository result: [RepositoryFactory]
+Jul-28 08:11:13.005 [main] DEBUG nextflow.scm.AssetManager - Git config: /home/hkates/.nextflow/assets/nf-core/scrnaseq/.git/config; branch: master; remote: origin; url: https://github.com/nf-core/scrnaseq.git
+Jul-28 08:11:13.810 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /home/hkates/.nextflow/assets/nf-core/scrnaseq/nextflow.config
+Jul-28 08:11:13.811 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/nextflow.config
+Jul-28 08:11:13.813 [main] DEBUG nextflow.config.ConfigBuilder - User config file: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/nextflow.config
+Jul-28 08:11:13.813 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/hkates/.nextflow/assets/nf-core/scrnaseq/nextflow.config
+Jul-28 08:11:13.814 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/nextflow.config
+Jul-28 08:11:13.814 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/nextflow.config
+Jul-28 08:11:13.821 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/hkates/.nextflow/secrets/store.json
+Jul-28 08:11:13.823 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@1ad9b8d3] - activable => nextflow.secret.LocalSecretsProvider@1ad9b8d3
+Jul-28 08:11:13.833 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `singularity`
+Jul-28 08:11:14.912 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `singularity`
+Jul-28 08:11:14.933 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `singularity`
+Jul-28 08:11:14.940 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [bih, cfc_dev, uzl_omics, ifb_core, embl_hd, denbi_qbic, alice, mjolnir_globe, uppmax, giga, incliva, ilifu, ki_luria, uge, icr_alma, rosalind_uge, lugh, mccleary, unibe_ibu, vai, czbiohub_aws, jax, roslin, tes, scw, unc_longleaf, tigem, tubingen_apg, google, apollo, ipop_up, vsc_calcua, test_cellrangermulti, pdc_kth, googlels, ceci_nic5, ccga_cau, humantechnopole, stjude, daisybio, eddie, medair, biowulf, apptainer, bi, bigpurple, adcra, cedars, pawsey_setonix, vsc_kul_uhasselt, pawsey_nimbus, ucl_myriad, utd_ganymede, charliecloud, fred_hutch, seattlechildrens, icr_davros, ceres, arm, munin, rosalind, hasta, cfc, uzh, shu_bmrc, ebi_codon_slurm, ebc, ccga_dx, crick, ku_sund_danhead, marvin, shifter, biohpc_gen, mana, mamba, york_viking, unc_lccc, wehi, awsbatch, wustl_htcf, arcc, ceci_dragon2, imperial, maestro, software_license, cannon, genotoul, nci_gadi, abims, eva_grace, janelia, nu_genomics, googlebatch, oist, sahmri, kaust, alliance_canada, mpcdf, leicester, vsc_ugent, create, sage, cambridge, jex, podman, ebi_codon, cheaha, xanadu, nyu_hpc, test, marjorie, computerome, ucd_sonic, gpu, test_multiome, seg_globe, mssm, sanger, dkfz, bluebear, pasteur, einstein, ethz_euler, m3c, test_full, imb, ucl_cscluster, tuos_stanage, azurebatch, hki, seadragon, crukmi, csiro_petrichor, qmul_apocrita, wave, docker, engaging, gis, hypatia, psmn, eva, unity, cropdiversityhpc, nygc, fgcz, conda, crg, singularity, mpcdf_viper, pe2, self_hosted_runner, tufts, uw_hyak_pedslabs, binac2, debug, genouest, cbe, unsw_katana, utd_juno, gitpod, phoenix, seawulf, uod_hpc, fub_curta, uct_hpc, aws_tower, binac, fsu_draco]
+Jul-28 08:11:14.973 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Jul-28 08:11:14.974 [main] DEBUG nextflow.cli.CmdRun - Launching `https://github.com/nf-core/scrnaseq` [clever_mahavira] DSL2 - revision: e0ddddbff9 [master]
+Jul-28 08:11:14.975 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins declared=[nf-schema@2.3.0]
+Jul-28 08:11:14.975 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-28 08:11:14.975 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[nf-schema@2.3.0]
+Jul-28 08:11:14.977 [main] DEBUG nextflow.plugin.PluginUpdater - Installing plugin nf-schema version: 2.3.0
+Jul-28 08:11:14.997 [main] INFO  org.pf4j.AbstractPluginManager - Plugin 'nf-schema@2.3.0' resolved
+Jul-28 08:11:14.997 [main] INFO  org.pf4j.AbstractPluginManager - Start plugin 'nf-schema@2.3.0'
+Jul-28 08:11:15.013 [main] DEBUG nextflow.plugin.BasePlugin - Plugin started nf-schema@2.3.0
+Jul-28 08:11:15.071 [main] DEBUG nextflow.Session - Session UUID: e2dc787e-d58a-4cbc-afc1-a919272d1d4e
+Jul-28 08:11:15.071 [main] DEBUG nextflow.Session - Run name: clever_mahavira
+Jul-28 08:11:15.072 [main] DEBUG nextflow.Session - Executor pool size: 16
+Jul-28 08:11:15.078 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jul-28 08:11:15.082 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=48; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-28 08:11:15.118 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.04.6 build 5954
+  Created: 01-07-2025 11:27 UTC (07:27 EDT)
+  System: Linux 5.14.0-503.40.1.el9_5.x86_64
+  Runtime: Groovy 4.0.26 on OpenJDK 64-Bit Server VM 20.0.1+9-29
+  Encoding: UTF-8 (UTF-8)
+  Process: 3877612@c0711a-s24.ufhpc [172.16.199.179]
+  CPUs: 16 - Mem: 503.2 GB (412.7 GB) - Swap: 8 GB (5.2 GB)
+Jul-28 08:11:15.206 [main] DEBUG nextflow.Session - Work-dir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo [lustre]
+Jul-28 08:11:15.249 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-28 08:11:15.264 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-28 08:11:15.281 [main] DEBUG nextflow.Session - Observer factory: ValidationObserverFactory
+Jul-28 08:11:15.305 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Jul-28 08:11:15.342 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-28 08:11:15.350 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 17; maxThreads: 1000
+Jul-28 08:11:15.477 [main] DEBUG nextflow.Session - Session start
+Jul-28 08:11:15.482 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/OUTPUT_GEXCMO/pipeline_info/execution_trace_2025-07-28_08-11-13.txt
+Jul-28 08:11:15.519 [main] DEBUG nextflow.Session - Using default localLib path: /home/hkates/.nextflow/assets/nf-core/scrnaseq/lib
+Jul-28 08:11:15.523 [main] DEBUG nextflow.Session - Adding to the classpath library: /home/hkates/.nextflow/assets/nf-core/scrnaseq/lib
+Jul-28 08:11:15.634 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-28 08:11:15.943 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryLog:paramsSummaryLog]; plugin Id: nf-schema
+Jul-28 08:11:15.965 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [validateParameters:validateParameters]; plugin Id: nf-schema
+Jul-28 08:11:15.976 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryMap:paramsSummaryMap]; plugin Id: nf-schema
+Jul-28 08:11:15.977 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [samplesheetToList:samplesheetToList]; plugin Id: nf-schema
+Jul-28 08:11:16.569 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryMap:paramsSummaryMap]; plugin Id: nf-schema
+Jul-28 08:11:16.683 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryLog:paramsSummaryLog]; plugin Id: nf-schema
+Jul-28 08:11:16.684 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [validateParameters:validateParameters]; plugin Id: nf-schema
+Jul-28 08:11:16.686 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryMap:paramsSummaryMap]; plugin Id: nf-schema
+Jul-28 08:11:16.686 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [samplesheetToList:samplesheetToList]; plugin Id: nf-schema
+Jul-28 08:11:19.117 [main] INFO  nextflow.Nextflow - 
+-[2m----------------------------------------------------[0m-
+                                        [0;32m,--.[0;30m/[0;32m,-.[0m
+[0;34m        ___     __   __   __   ___     [0;32m/,-._.--~'[0m
+[0;34m  |\ | |__  __ /  ` /  \ |__) |__         [0;33m}  {[0m
+[0;34m  | \| |       \__, \__/ |  \ |___     [0;32m\`-._,-`-,[0m
+                                        [0;32m`._,._,'[0m
+[0;35m  nf-core/scrnaseq 4.0.0[0m
+-[2m----------------------------------------------------[0m-
+[1mInput/output options[0m
+  [0;34minput                    : [0;32msamplesheet.gexcmo.csv[0m
+  [0;34moutdir                   : [0;32mOUTPUT_GEXCMO[0m
+
+[1mMandatory arguments[0m
+  [0;34maligner                  : [0;32mcellrangermulti[0m
+
+[1mReference genome options[0m
+  [0;34mfasta                    : [0;32m/orange/cancercenter-dept/GENOMES/GENOMES/references/Mus_musculus/Ensembl/GRCm39/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa[0m
+  [0;34mgtf                      : [0;32m/orange/cancercenter-dept/GENOMES/GENOMES/references/Mus_musculus/Ensembl/GRCm39/Mus_musculus.GRCm39.111.gtf[0m
+  [0;34msave_align_intermeds     : [0;32mtrue[0m
+
+[1mCellranger Multi options[0m
+  [0;34mgex_cmo_set              : [0;32mcmo_reference.csv[0m
+  [0;34mcellranger_multi_barcodes: [0;32mbarcode_sheet.csv[0m
+
+[1mGeneric options[0m
+  [0;34mtrace_report_suffix      : [0;32m2025-07-28_08-11-13[0m
+
+[1mCore Nextflow options[0m
+  [0;34mrevision                 : [0;32mmaster[0m
+  [0;34mrunName                  : [0;32mclever_mahavira[0m
+  [0;34mcontainerEngine          : [0;32msingularity[0m
+  [0;34mlaunchDir                : [0;32m/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline[0m
+  [0;34mworkDir                  : [0;32m/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo[0m
+  [0;34mprojectDir               : [0;32m/home/hkates/.nextflow/assets/nf-core/scrnaseq[0m
+  [0;34muserName                 : [0;32mhkates[0m
+  [0;34mprofile                  : [0;32msingularity[0m
+  [0;34mconfigFiles              : [0;32m/home/hkates/.nextflow/assets/nf-core/scrnaseq/nextflow.config, /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/nextflow.config, /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/nextflow.config[0m
+
+!! Only displaying parameters that differ from the pipeline defaults !!
+-[2m----------------------------------------------------[0m-
+* The pipeline
+    https://doi.org/10.5281/zenodo.3568187
+
+* The nf-core framework
+    https://doi.org/10.1038/s41587-020-0439-x
+
+* Software dependencies
+    https://github.com/nf-core/scrnaseq/blob/master/CITATIONS.md
+
+Jul-28 08:11:19.120 [main] DEBUG n.validation.ValidationExtension - Starting parameters validation
+Jul-28 08:11:19.158 [main] WARN  n.validation.ValidationExtension - The following invalid input values have been detected:
+
+* --monochromeLogs: null
+
+
+Jul-28 08:11:19.259 [main] DEBUG nextflow.validation.SchemaEvaluator - Started validating /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/samplesheet.gexcmo.csv
+Jul-28 08:11:20.907 [main] DEBUG nextflow.validation.SchemaEvaluator - Validation of file 'samplesheet.gexcmo.csv' passed!
+Jul-28 08:11:21.059 [main] DEBUG n.v.FormatDirectoryPathEvaluator - Cloud blob storage paths are not supported by 'FormatDirectoryPathEvaluator': 's3://ngi-igenomes/igenomes/'
+Jul-28 08:11:21.156 [main] DEBUG n.validation.ValidationExtension - Finishing parameters validation
+Jul-28 08:11:21.291 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC
+Jul-28 08:11:21.293 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:FASTQC` matches process NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC
+Jul-28 08:11:21.300 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-28 08:11:21.300 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-28 08:11:21.307 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Jul-28 08:11:21.314 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Jul-28 08:11:21.316 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Jul-28 08:11:21.318 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Jul-28 08:11:21.335 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC': maxForks=0; fair=false; array=0
+Jul-28 08:11:21.370 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name NFCORE_SCRNASEQ:SCRNASEQ:GTF_GENE_FILTER
+Jul-28 08:11:21.371 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GTF_GENE_FILTER` matches process NFCORE_SCRNASEQ:SCRNASEQ:GTF_GENE_FILTER
+Jul-28 08:11:21.372 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-28 08:11:21.372 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-28 08:11:21.373 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:GTF_GENE_FILTER': maxForks=0; fair=false; array=0
+Jul-28 08:11:21.391 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:PARSE_CELLRANGERMULTI_SAMPLESHEET
+Jul-28 08:11:21.393 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-28 08:11:21.393 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-28 08:11:21.394 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:PARSE_CELLRANGERMULTI_SAMPLESHEET': maxForks=0; fair=false; array=0
+Jul-28 08:11:21.409 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKGTF
+Jul-28 08:11:21.410 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CELLRANGER_MKGTF` matches process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKGTF
+Jul-28 08:11:21.411 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-28 08:11:21.412 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-28 08:11:21.412 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKGTF': maxForks=0; fair=false; array=0
+Jul-28 08:11:21.418 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high` matches labels `process_high` for process with name NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKREF
+Jul-28 08:11:21.419 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CELLRANGER_MKREF` matches process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKREF
+Jul-28 08:11:21.421 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-28 08:11:21.421 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-28 08:11:21.421 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKREF': maxForks=0; fair=false; array=0
+Jul-28 08:11:21.431 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high` matches labels `process_high` for process with name NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKVDJREF
+Jul-28 08:11:21.431 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CELLRANGER_MKVDJREF` matches process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKVDJREF
+Jul-28 08:11:21.433 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-28 08:11:21.433 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-28 08:11:21.434 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKVDJREF': maxForks=0; fair=false; array=0
+Jul-28 08:11:21.455 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high` matches labels `process_high` for process with name NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI
+Jul-28 08:11:21.456 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI` matches process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI
+Jul-28 08:11:21.458 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-28 08:11:21.459 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-28 08:11:21.459 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI': maxForks=0; fair=false; array=0
+Jul-28 08:11:21.486 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_SCRNASEQ:SCRNASEQ:MTX_TO_H5AD
+Jul-28 08:11:21.487 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MTX_TO_H5AD|CONCAT_H5AD|ANNDATAR_CONVERT` matches process NFCORE_SCRNASEQ:SCRNASEQ:MTX_TO_H5AD
+Jul-28 08:11:21.489 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-28 08:11:21.490 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-28 08:11:21.490 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:MTX_TO_H5AD': maxForks=0; fair=false; array=0
+Jul-28 08:11:21.511 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium,process_gpu` for process with name NFCORE_SCRNASEQ:SCRNASEQ:H5AD_REMOVEBACKGROUND_BARCODES_CELLBENDER_ANNDATA:CELLBENDER_REMOVEBACKGROUND
+Jul-28 08:11:21.512 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_gpu` matches labels `process_medium,process_gpu` for process with name NFCORE_SCRNASEQ:SCRNASEQ:H5AD_REMOVEBACKGROUND_BARCODES_CELLBENDER_ANNDATA:CELLBENDER_REMOVEBACKGROUND
+Jul-28 08:11:21.512 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CELLBENDER_REMOVEBACKGROUND` matches process NFCORE_SCRNASEQ:SCRNASEQ:H5AD_REMOVEBACKGROUND_BARCODES_CELLBENDER_ANNDATA:CELLBENDER_REMOVEBACKGROUND
+Jul-28 08:11:21.515 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-28 08:11:21.515 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-28 08:11:21.515 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:H5AD_REMOVEBACKGROUND_BARCODES_CELLBENDER_ANNDATA:CELLBENDER_REMOVEBACKGROUND': maxForks=0; fair=false; array=0
+Jul-28 08:11:21.531 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_SCRNASEQ:SCRNASEQ:H5AD_REMOVEBACKGROUND_BARCODES_CELLBENDER_ANNDATA:ANNDATA_BARCODES
+Jul-28 08:11:21.532 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ANNDATA_BARCODES` matches process NFCORE_SCRNASEQ:SCRNASEQ:H5AD_REMOVEBACKGROUND_BARCODES_CELLBENDER_ANNDATA:ANNDATA_BARCODES
+Jul-28 08:11:21.533 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-28 08:11:21.533 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-28 08:11:21.534 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:H5AD_REMOVEBACKGROUND_BARCODES_CELLBENDER_ANNDATA:ANNDATA_BARCODES': maxForks=0; fair=false; array=0
+Jul-28 08:11:21.544 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_SCRNASEQ:SCRNASEQ:H5AD_CONVERSION:CONCAT_H5AD
+Jul-28 08:11:21.544 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MTX_TO_H5AD|CONCAT_H5AD|ANNDATAR_CONVERT` matches process NFCORE_SCRNASEQ:SCRNASEQ:H5AD_CONVERSION:CONCAT_H5AD
+Jul-28 08:11:21.546 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-28 08:11:21.546 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-28 08:11:21.546 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:H5AD_CONVERSION:CONCAT_H5AD': maxForks=0; fair=false; array=0
+Jul-28 08:11:21.554 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_SCRNASEQ:SCRNASEQ:H5AD_CONVERSION:ANNDATAR_CONVERT
+Jul-28 08:11:21.554 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MTX_TO_H5AD|CONCAT_H5AD|ANNDATAR_CONVERT` matches process NFCORE_SCRNASEQ:SCRNASEQ:H5AD_CONVERSION:ANNDATAR_CONVERT
+Jul-28 08:11:21.556 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-28 08:11:21.556 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-28 08:11:21.556 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:H5AD_CONVERSION:ANNDATAR_CONVERT': maxForks=0; fair=false; array=0
+Jul-28 08:11:21.647 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_SCRNASEQ:SCRNASEQ:MULTIQC
+Jul-28 08:11:21.649 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MULTIQC` matches process NFCORE_SCRNASEQ:SCRNASEQ:MULTIQC
+Jul-28 08:11:21.651 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-28 08:11:21.651 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-28 08:11:21.652 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:MULTIQC': maxForks=0; fair=false; array=0
+Jul-28 08:11:21.665 [main] DEBUG nextflow.Session - Config process names validation disabled as requested
+Jul-28 08:11:21.691 [main] DEBUG nextflow.Session - Igniting dataflow network (30)
+Jul-28 08:11:21.692 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC
+Jul-28 08:11:21.694 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:GTF_GENE_FILTER
+Jul-28 08:11:21.695 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:PARSE_CELLRANGERMULTI_SAMPLESHEET
+Jul-28 08:11:21.695 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKGTF
+Jul-28 08:11:21.695 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKREF
+Jul-28 08:11:21.695 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKVDJREF
+Jul-28 08:11:21.695 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI
+Jul-28 08:11:21.695 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:MTX_TO_H5AD
+Jul-28 08:11:21.695 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:H5AD_REMOVEBACKGROUND_BARCODES_CELLBENDER_ANNDATA:CELLBENDER_REMOVEBACKGROUND
+Jul-28 08:11:21.695 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:H5AD_REMOVEBACKGROUND_BARCODES_CELLBENDER_ANNDATA:ANNDATA_BARCODES
+Jul-28 08:11:21.695 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:H5AD_CONVERSION:CONCAT_H5AD
+Jul-28 08:11:21.696 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:H5AD_CONVERSION:ANNDATAR_CONVERT
+Jul-28 08:11:21.706 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:MULTIQC
+Jul-28 08:11:21.708 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_116619ccb325236c: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/cellranger/count/main.nf
+  Script_2cdf1dd129ca8d6b: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/local/kallisto_bustools.nf
+  Script_2422cb5c866a3f02: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/cellranger/mkgtf/main.nf
+  Script_215a636da7ab24a2: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/nf-core/utils_nfschema_plugin/main.nf
+  Script_17ce930509503341: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/local/starsolo.nf
+  Script_a5e3a56fa0f5753f: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/local/align_cellrangerarc.nf
+  Script_5c4e8d4051efa81e: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/nf-core/utils_nfcore_pipeline/main.nf
+  Script_01678c41b497280c: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/local/alevinqc.nf
+  Script_2ce2cea66f33b0c9: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/local/parse_cellrangermulti_samplesheet.nf
+  Script_b6f2f5397ff1b307: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/local/gtf_gene_filter.nf
+  Script_0690c94ccbc80cf8: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/anndata/barcodes/main.nf
+  Script_f484bb04f71d5cb3: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/cellranger/multi/main.nf
+  Script_85014429899d4eed: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/cellrangerarc/count/main.nf
+  Script_2b5dc2db40c0c7f1: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/local/simpleaf.nf
+  Script_0fdb2e5f8575be0c: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/multiqc/main.nf
+  Script_9920ace3f63f7548: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/local/concat_h5ad.nf
+  Script_67f289d1fa44410a: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/kallistobustools/count/main.nf
+  Script_a242b7d3e1522c1a: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/local/align_cellranger.nf
+  Script_c224a5d34be70db1: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/nf-core/h5ad_removebackground_barcodes_cellbender_anndata/main.nf
+  Script_0cb99b50b73564f3: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/simpleaf/index/main.nf
+  Script_e6da1e6a0fbb4bd4: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/simpleaf/quant/main.nf
+  Script_b8ef320e712f03dd: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/cellrangerarc/mkgtf/main.nf
+  Script_4f612cfd8c52e8cd: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/nf-core/utils_nextflow_pipeline/main.nf
+  Script_c12f64b9d72aaf58: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/local/star_align.nf
+  Script_8b4cd5023b0747bc: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/star/genomegenerate/main.nf
+  Script_3c99494cecee2398: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/local/h5ad_conversion.nf
+  Script_7db0c40b9e083db8: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/local/mtx_to_h5ad.nf
+  Script_e04fff270dc1ec83: /home/hkates/.nextflow/assets/nf-core/scrnaseq/main.nf
+  Script_7fc9d40ebc5611d3: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/cellranger/mkref/main.nf
+  Script_bbcd84f7538bc350: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/local/utils_nfcore_scrnaseq_pipeline/main.nf
+  Script_f535f8fb412be0f3: /home/hkates/.nextflow/assets/nf-core/scrnaseq/workflows/scrnaseq.nf
+  Script_7d26d205472ec618: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/local/fastqc.nf
+  Script_dc41886bdbd95b0b: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/fastqc/main.nf
+  Script_a415462e1630ff87: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/cellbender/removebackground/main.nf
+  Script_b6e854e2f4a9b0b7: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/kallistobustools/ref/main.nf
+  Script_ee6d5a1dfbefe9e1: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/cellranger/mkvdjref/main.nf
+  Script_a6b84a8d8db37c9d: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/gunzip/main.nf
+  Script_13d4ec1d4f43657c: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/local/anndatar_convert.nf
+  Script_fd9ffb2ce3d24fd1: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/cellrangerarc/mkref/main.nf
+  Script_cf189f8d1668d163: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/local/align_cellrangermulti.nf
+Jul-28 08:11:21.708 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jul-28 08:11:21.708 [main] DEBUG nextflow.Session - Session await
+Jul-28 08:11:21.779 [Actor Thread 9] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=https://depot.galaxyproject.org/singularity/python:3.9--1; path=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/singularity/depot.galaxyproject.org-singularity-python-3.9--1.img
+Jul-28 08:11:21.779 [Actor Thread 23] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0; path=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/singularity/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img
+Jul-28 08:11:21.796 [Actor Thread 8] DEBUG nextflow.util.HashBuilder - Hash asset file sha-256: /home/hkates/.nextflow/assets/nf-core/scrnaseq/bin/check_cellrangermulti.py
+Jul-28 08:11:21.800 [Actor Thread 16] DEBUG nextflow.util.HashBuilder - Hash asset file sha-256: /home/hkates/.nextflow/assets/nf-core/scrnaseq/bin/filter_gtf_for_genes_in_genome.py
+Jul-28 08:11:21.802 [Actor Thread 7] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 1; slices: 1; internal sort time: 0.001 s; external sort time: 0.019 s; total time: 0.02 s
+Jul-28 08:11:21.802 [Actor Thread 11] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 1; slices: 1; internal sort time: 0.001 s; external sort time: 0.019 s; total time: 0.02 s
+Jul-28 08:11:21.804 [Actor Thread 7] DEBUG nextflow.file.FileCollector - >> temp file exists? false
+Jul-28 08:11:21.804 [Actor Thread 11] DEBUG nextflow.file.FileCollector - >> temp file exists? false
+Jul-28 08:11:21.806 [Actor Thread 7] DEBUG nextflow.file.FileCollector - Missed collect-file cache -- cause: java.nio.file.NoSuchFileException: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/collect-file/ee1ccc412985f192c7c099e85779e272
+Jul-28 08:11:21.806 [Actor Thread 11] DEBUG nextflow.file.FileCollector - Missed collect-file cache -- cause: java.nio.file.NoSuchFileException: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/collect-file/7abd5672edc374a77c089cc622f07077
+Jul-28 08:11:21.813 [Actor Thread 11] DEBUG nextflow.file.FileCollector - Saved collect-files list to: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/collect-file/7abd5672edc374a77c089cc622f07077
+Jul-28 08:11:21.816 [Actor Thread 7] DEBUG nextflow.file.FileCollector - Saved collect-files list to: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/collect-file/ee1ccc412985f192c7c099e85779e272
+Jul-28 08:11:21.820 [Actor Thread 11] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /scratch/local/8599259/nxf-15480425854957580099
+Jul-28 08:11:21.820 [Actor Thread 7] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /scratch/local/8599259/nxf-11524897472068015639
+Jul-28 08:11:21.894 [Actor Thread 18] INFO  nextflow.processor.TaskProcessor - [d1/5b7d4d] Cached process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL)
+Jul-28 08:11:21.899 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [b9/8cc470] Cached process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT)
+Jul-28 08:11:21.912 [Actor Thread 2] INFO  nextflow.processor.TaskProcessor - [55/33f8b2] Cached process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL)
+Jul-28 08:11:21.912 [Actor Thread 16] INFO  nextflow.processor.TaskProcessor - [da/908195] Cached process > NFCORE_SCRNASEQ:SCRNASEQ:GTF_GENE_FILTER (Mus_musculus.GRCm39.dna_sm.primary_assembly.fa)
+Jul-28 08:11:21.924 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL) > jobId: 8599434; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/1c/e262b82831e1ec1433b40487496e98
+Jul-28 08:11:21.925 [Actor Thread 7] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://quay.io/nf-core/cellranger:8.0.0; path=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/singularity/quay.io-nf-core-cellranger-8.0.0.img
+Jul-28 08:11:21.925 [Task submitter] INFO  nextflow.Session - [1c/e262b8] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL)
+Jul-28 08:11:21.932 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [89/d1bc77] Cached process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:PARSE_CELLRANGERMULTI_SAMPLESHEET
+Jul-28 08:11:21.934 [Actor Thread 1] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=48; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-28 08:11:21.970 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT) > jobId: 8599435; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/11/c03b491daa3317d42a4661a8303a61
+Jul-28 08:11:21.970 [Task submitter] INFO  nextflow.Session - [11/c03b49] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT)
+Jul-28 08:11:21.970 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [bf/3418ed] Cached process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT)
+Jul-28 08:11:22.023 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL) > jobId: 8599436; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/e4/e07fa176b629113db3734bef92043b
+Jul-28 08:11:22.024 [Task submitter] INFO  nextflow.Session - [e4/e07fa1] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL)
+Jul-28 08:11:22.025 [Actor Thread 8] DEBUG nextflow.processor.TaskProcessor - Process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:PARSE_CELLRANGERMULTI_SAMPLESHEET > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+Jul-28 08:11:22.040 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [67/2821b1] Cached process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKGTF (Mus_musculus.GRCm39.dna_sm.primary_assembly_genes.gtf)
+Jul-28 08:11:22.046 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT) > jobId: 8599437; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/58/85b544c578c1c29a8156b6c99b489d
+Jul-28 08:11:22.046 [Task submitter] INFO  nextflow.Session - [58/85b544] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT)
+Jul-28 08:11:22.067 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [00/c705f9] Cached process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKVDJREF (Mus_musculus.GRCm39.dna_sm.primary_assembly.fa)
+Jul-28 08:11:22.082 [Actor Thread 9] INFO  nextflow.processor.TaskProcessor - [59/4f068e] Cached process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKREF (Mus_musculus.GRCm39.dna_sm.primary_assembly.fa)
+Jul-28 08:11:22.230 [Actor Thread 4] DEBUG nextflow.util.HashBuilder - Hash asset file sha-256: /home/hkates/.nextflow/assets/nf-core/scrnaseq/assets/EMPTY
+Jul-28 08:11:22.271 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL) > jobId: 8599438; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/5a/fb98500cfb513d4d183cc7efcd8526
+Jul-28 08:11:22.272 [Task submitter] INFO  nextflow.Session - [5a/fb9850] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL)
+Jul-28 08:11:22.297 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT) > jobId: 8599439; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/66/5384593c26a37f10dd08f51245d3ac
+Jul-28 08:11:22.298 [Task submitter] INFO  nextflow.Session - [66/538459] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT)
+Jul-28 08:11:22.319 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT) > jobId: 8599440; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/d6/0933b06a76ff2067d996796439b79b
+Jul-28 08:11:22.320 [Task submitter] INFO  nextflow.Session - [d6/0933b0] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT)
+Jul-28 08:11:22.341 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL) > jobId: 8599441; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/43/d78e247a1a8307a9226f6992ed1900
+Jul-28 08:11:22.341 [Task submitter] INFO  nextflow.Session - [43/d78e24] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL)
+Jul-28 08:14:31.351 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8599438; id: 17; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL); status: COMPLETED; exit: 1; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/5a/fb98500cfb513d4d183cc7efcd8526 started: 1753704856345; exited: 2025-07-28T12:14:27Z; ]
+Jul-28 08:14:31.352 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=48; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-28 08:14:31.356 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8599439; id: 14; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT); status: COMPLETED; exit: 1; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/66/5384593c26a37f10dd08f51245d3ac started: 1753704856346; exited: 2025-07-28T12:14:27Z; ]
+Jul-28 08:14:31.359 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8599440; id: 16; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT); status: COMPLETED; exit: 1; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/d6/0933b06a76ff2067d996796439b79b started: 1753704856348; exited: 2025-07-28T12:14:27Z; ]
+Jul-28 08:14:31.362 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8599441; id: 15; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL); status: COMPLETED; exit: 1; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/43/d78e247a1a8307a9226f6992ed1900 started: 1753704856350; exited: 2025-07-28T12:14:30Z; ]
+Jul-28 08:14:31.364 [TaskFinalizer-2] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT); work-dir=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/66/5384593c26a37f10dd08f51245d3ac
+  error [nextflow.exception.ProcessFailedException]: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT)` terminated with an error exit status (1)
+Jul-28 08:14:31.372 [TaskFinalizer-2] INFO  nextflow.processor.TaskProcessor - [66/538459] NOTE: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT)` terminated with an error exit status (1) -- Execution is retried (1)
+Jul-28 08:14:31.374 [TaskFinalizer-3] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT); work-dir=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/d6/0933b06a76ff2067d996796439b79b
+  error [nextflow.exception.ProcessFailedException]: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT)` terminated with an error exit status (1)
+Jul-28 08:14:31.376 [TaskFinalizer-3] INFO  nextflow.processor.TaskProcessor - [d6/0933b0] NOTE: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT)` terminated with an error exit status (1) -- Execution is retried (1)
+Jul-28 08:14:31.378 [TaskFinalizer-4] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL); work-dir=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/43/d78e247a1a8307a9226f6992ed1900
+  error [nextflow.exception.ProcessFailedException]: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL)` terminated with an error exit status (1)
+Jul-28 08:14:31.380 [TaskFinalizer-4] INFO  nextflow.processor.TaskProcessor - [43/d78e24] NOTE: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL)` terminated with an error exit status (1) -- Execution is retried (1)
+Jul-28 08:14:31.380 [TaskFinalizer-1] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL); work-dir=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/5a/fb98500cfb513d4d183cc7efcd8526
+  error [nextflow.exception.ProcessFailedException]: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL)` terminated with an error exit status (1)
+Jul-28 08:14:31.381 [TaskFinalizer-1] INFO  nextflow.processor.TaskProcessor - [5a/fb9850] NOTE: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL)` terminated with an error exit status (1) -- Execution is retried (1)
+Jul-28 08:14:31.405 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT) > jobId: 8599642; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/8a/ff373a52126927d0d8aac5f772604b
+Jul-28 08:14:31.405 [Task submitter] INFO  nextflow.Session - [8a/ff373a] Re-submitted process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT)
+Jul-28 08:14:31.428 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT) > jobId: 8599643; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/af/12916e97370779c337a8f36dd8bb70
+Jul-28 08:14:31.428 [Task submitter] INFO  nextflow.Session - [af/12916e] Re-submitted process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT)
+Jul-28 08:14:31.449 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL) > jobId: 8599644; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/c7/31bc637d3ca4879174cb54c6afc0bc
+Jul-28 08:14:31.450 [Task submitter] INFO  nextflow.Session - [c7/31bc63] Re-submitted process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL)
+Jul-28 08:14:31.469 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL) > jobId: 8599645; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/2b/68d3fd11028590bfe77d7186e3356e
+Jul-28 08:14:31.469 [Task submitter] INFO  nextflow.Session - [2b/68d3fd] Re-submitted process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL)
+Jul-28 08:16:26.339 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 8 -- submitted tasks are shown below
+~> TaskHandler[jobId: 8599434; id: 6; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/1c/e262b82831e1ec1433b40487496e98 started: 1753704856333; exited: -; ]
+~> TaskHandler[jobId: 8599435; id: 5; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/11/c03b491daa3317d42a4661a8303a61 started: 1753704856339; exited: -; ]
+~> TaskHandler[jobId: 8599436; id: 4; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/e4/e07fa176b629113db3734bef92043b started: 1753704856341; exited: -; ]
+~> TaskHandler[jobId: 8599437; id: 3; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/58/85b544c578c1c29a8156b6c99b489d started: 1753704856343; exited: -; ]
+~> TaskHandler[jobId: 8599642; id: 18; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT); status: SUBMITTED; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/8a/ff373a52126927d0d8aac5f772604b started: -; exited: -; ]
+~> TaskHandler[jobId: 8599643; id: 19; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT); status: SUBMITTED; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/af/12916e97370779c337a8f36dd8bb70 started: -; exited: -; ]
+~> TaskHandler[jobId: 8599644; id: 21; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL); status: SUBMITTED; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/c7/31bc637d3ca4879174cb54c6afc0bc started: -; exited: -; ]
+~> TaskHandler[jobId: 8599645; id: 20; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL); status: SUBMITTED; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/2b/68d3fd11028590bfe77d7186e3356e started: -; exited: -; ]
+Jul-28 08:17:36.345 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8599642; id: 18; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT); status: COMPLETED; exit: 1; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/8a/ff373a52126927d0d8aac5f772604b started: 1753705041343; exited: 2025-07-28T12:17:34Z; ]
+Jul-28 08:17:36.348 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8599643; id: 19; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT); status: COMPLETED; exit: 1; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/af/12916e97370779c337a8f36dd8bb70 started: 1753705041345; exited: 2025-07-28T12:17:34Z; ]
+Jul-28 08:17:36.348 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT); work-dir=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/8a/ff373a52126927d0d8aac5f772604b
+  error [nextflow.exception.ProcessFailedException]: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT)` terminated with an error exit status (1)
+Jul-28 08:17:36.350 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8599644; id: 21; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL); status: COMPLETED; exit: 1; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/c7/31bc637d3ca4879174cb54c6afc0bc started: 1753705041348; exited: 2025-07-28T12:17:34Z; ]
+Jul-28 08:17:36.353 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8599645; id: 20; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL); status: COMPLETED; exit: 1; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/2b/68d3fd11028590bfe77d7186e3356e started: 1753705041350; exited: 2025-07-28T12:17:34Z; ]
+Jul-28 08:17:36.376 [TaskFinalizer-5] ERROR nextflow.processor.TaskProcessor - Error executing process > 'NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT)'
+
+Caused by:
+  Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT)` terminated with an error exit status (1)
+
+
+Command executed [/home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/cellranger/multi/templates/cellranger_multi.py]:
+
+  #!/usr/bin/env python3
+  """
+  Automatically rename staged files for input into cellranger multi and run it.
+  
+  Copyright (c) Felipe Almeida 2024 - MIT License
+  """
+  
+  from subprocess import run
+  from pathlib import Path
+  from textwrap import dedent
+  import shlex
+  import re
+  
+  
+  def chunk_iter(seq, size):
+      """iterate over `seq` in chunks of `size`"""
+      return (seq[pos : pos + size] for pos in range(0, len(seq), size))
+  
+  
+  sample_id = "YT"
+  EMPTY_FILE = "EMPTY"
+  
+  # target directory in which the renamed fastqs will be placed
+  fastq_all = Path("./fastq_all")
+  fastq_all.mkdir(exist_ok=True)
+  
+  # Match R1 in the filename, but only if it is followed by a non-digit or non-character
+  # match "file_R1.fastq.gz", "file.R1_000.fastq.gz", etc. but
+  # do not match "SRR12345", "file_INFIXR12", etc
+  filename_pattern = r"([^a-zA-Z0-9])R1([^a-zA-Z0-9])"
+  
+  for modality in ["gex", "vdj", "ab", "beam", "cmo", "cirspr"]:
+      # get fastqs, ordered by path. Files are staged into
+      #   - "fastq_001/{original_name.fastq.gz}"
+      #   - "fastq_002/{original_name.fastq.gz}"
+      #   - ...
+      # Since we require fastq files in the input channel to be ordered such that a R1/R2 pair
+      # of files follows each other, ordering will get us a sequence of [R1, R2, R1, R2, ...]
+      fastqs = sorted(p for p in Path(".").glob(f"fastqs/{modality}/*/*") if p.name != EMPTY_FILE)
+      assert len(fastqs) % 2 == 0
+  
+      # target directory in which the renamed fastqs will be placed
+      final_dir = fastq_all / modality
+      final_dir.mkdir(exist_ok=True)
+  
+      for i, (r1, r2) in enumerate(chunk_iter(fastqs, 2), start=1):
+          # will we rename the files or just move it with the same name to
+          # the 'fastq_all' directory which is where files are expected?
+          if "false" == "true":  # nf variables are true/false, which are different from Python
+              resolved_name_r1 = r1.name
+              resolved_name_r2 = r2.name
+  
+          else:
+              # double escapes are required because nextflow processes this python 'template'
+              if re.sub(filename_pattern, r"\1R2\2", r1.name) != r2.name:
+                  raise AssertionError(
+                      dedent(
+                          f"""                        We expect R1 and R2 of the same sample to have the same filename except for R1/R2.
+                          This has been checked by replacing "R1" with "R2" in the first filename and comparing it to the second filename.
+                          If you believe this check shouldn't have failed on your filenames, please report an issue on GitHub!
+  
+                          Files involved:
+                              - {r1}
+                              - {r2}
+                          """
+                      )
+                  )
+  
+              resolved_name_r1 = f"{sample_id}_S1_L{i:03d}_R1_001.fastq.gz"
+              resolved_name_r2 = f"{sample_id}_S1_L{i:03d}_R2_001.fastq.gz"
+  
+          # rename or just move
+          r1.rename(final_dir / resolved_name_r1)
+          r2.rename(final_dir / resolved_name_r2)
+  
+  #
+  # fix relative paths from main.nf
+  #
+  work_dir = str(Path.cwd()) + "/"
+  gex_reference_path = "reference,./references/gex/gex_reference".replace("./", work_dir)
+  frna_probeset = "".replace("./", work_dir)
+  target_panel = "".replace("./", work_dir)
+  cmo_reference_path = "cmo-set,./references/cmo/cmo_reference.csv".replace("./", work_dir)
+  cmo_barcode_path = "".replace("./", work_dir)
+  fb_reference_path = "".replace("./", work_dir)
+  vdj_reference_path = "".replace("./", work_dir)
+  primer_index = "".replace("./", work_dir)
+  fastq_gex = "YT,./fastq_all/gex,,Gene Expression".replace("./", work_dir)
+  fastq_vdj = "".replace("./", work_dir)
+  fastq_antibody = "".replace("./", work_dir)
+  fastq_beam = "".replace("./", work_dir)
+  fastq_crispr = "".replace("./", work_dir)
+  fastq_cmo = "YT,./fastq_all/cmo,,Multiplexing Capture".replace("./", work_dir)
+  
+  #
+  # generate config file for cellranger multi
+  #
+  config_txt = f"""[gene-expression]
+  {gex_reference_path}
+  {frna_probeset}
+  
+  
+  
+  
+  
+  
+  
+  create-bam,true
+  
+  {target_panel}
+  
+  
+  
+  {cmo_reference_path}
+  {cmo_barcode_path}
+  
+  
+  {fb_reference_path}
+  
+  
+  
+  
+  {vdj_reference_path}
+  {primer_index}
+  
+  
+  
+  [libraries]
+  fastq_id,fastqs,lanes,feature_types
+  {fastq_gex}
+  {fastq_vdj}
+  {fastq_antibody}
+  {fastq_beam}
+  {fastq_crispr}
+  {fastq_cmo}
+  """
+  
+  #
+  # check the extra data that is included
+  #
+  if len("[samples]") > 0:
+      with open("references/cmo/barcodes/YT_cmo.csv", "r") as input_conf:
+          config_txt = config_txt + "\n[samples]\n" + input_conf.read() + "\n"
+  
+  if len("") > 0:
+      with open("", "r") as input_conf, open("", "r") as input_csv:
+          config_txt = config_txt + "\n\n" + input_conf.read() + "\n"
+          config_txt = config_txt + "[feature]\n" + input_csv.read() + "\n"
+  
+  if len("") > 0:
+      with open("", "r") as input_conf:
+          config_txt = config_txt + "\n\n" + input_conf.read() + "\n"
+  
+  # Remove blank lines from config text
+  config_txt = "\n".join([line for line in config_txt.split("\n") if line.strip() != ""])
+  
+  # Save config file
+  with open("cellranger_multi_config.csv", "w") as file:
+      file.write(config_txt)
+  
+  #
+  # run cellranger multi
+  #
+  run(
+      # fmt: off
+      [
+          "cellranger",
+          "multi",
+          f"--id={sample_id}",
+          "--csv=cellranger_multi_config.csv",
+          "--localcores=24",
+          "--localmem=144",
+          *shlex.split(""""""),
+      ],
+      # fmt: on
+      check=True,
+  )
+  
+  # Output version information
+  version = run(
+      ["cellranger", "-V"],
+      text=True,
+      check=True,
+      capture_output=True,
+  ).stdout.replace("cellranger cellranger-", "")
+  
+  # alas, no `pyyaml` pre-installed in the cellranger container
+  with open("versions.yml", "w") as f:
+      f.write('"NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI":\n')
+      f.write(f'  cellranger: "{version}"\n')
+
+Command exit status:
+  1
+
+Command output:
+  Martian Runtime - v4.0.12
+  Serving UI at http://c0705a-s18.ufhpc:42895?auth=4_9D-1WFBaNy8SwSpo5fsQIEcBuwIEV6JOBIXDz5mu0
+  
+  Running preflight checks (please wait)...
+  
+  [error] Pipestance failed. Error log at:
+  YT/SC_MULTI_CS/MULTI_PREFLIGHT/fork0/chnk0-u004e876a4f/_errors
+  
+  Log message:
+  The feature reference file header does not contain one or more required comma-separated fields: "id".
+  The following fields were found: "name, read, pattern, sequence, feature_type".
+  Please check that your file is in CSV format and has the required field names.
+  
+  Waiting 6 seconds for UI to do final refresh.
+  Pipestance failed. Use --noexit option to keep UI running after failure.
+  
+  2025-07-28 08:17:33 Shutting down.
+  Saving pipestance info to "YT/YT.mri.tgz"
+  For assistance, upload this file to 10x Genomics by running:
+  
+  cellranger upload <your_email> "YT/YT.mri.tgz"
+
+Command error:
+  INFO:    Environment variable SINGULARITYENV_TMPDIR is set, but APPTAINERENV_TMPDIR is preferred
+  INFO:    Environment variable SINGULARITYENV_NXF_TASK_WORKDIR is set, but APPTAINERENV_NXF_TASK_WORKDIR is preferred
+  INFO:    Environment variable SINGULARITYENV_NXF_DEBUG is set, but APPTAINERENV_NXF_DEBUG is preferred
+  
+  
+  Traceback (most recent call last):
+    File ".command.sh", line 164, in <module>
+      run(
+    File "/opt/conda/lib/python3.10/subprocess.py", line 526, in run
+      raise CalledProcessError(retcode, process.args,
+  subprocess.CalledProcessError: Command '['cellranger', 'multi', '--id=YT', '--csv=cellranger_multi_config.csv', '--localcores=24', '--localmem=144']' returned non-zero exit status 1.
+
+Work dir:
+  /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/8a/ff373a52126927d0d8aac5f772604b
+
+Container:
+  /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/singularity/quay.io-nf-core-cellranger-8.0.0.img
+
+Tip: when you have fixed the problem you can continue the execution adding the option `-resume` to the run command line
+Jul-28 08:17:36.379 [TaskFinalizer-8] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL); work-dir=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/2b/68d3fd11028590bfe77d7186e3356e
+  error [nextflow.exception.ProcessFailedException]: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL)` terminated with an error exit status (1)
+Jul-28 08:17:36.381 [TaskFinalizer-5] DEBUG nextflow.Session - Session aborted -- Cause: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT)` terminated with an error exit status (1)
+Jul-28 08:17:36.381 [TaskFinalizer-7] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL); work-dir=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/c7/31bc637d3ca4879174cb54c6afc0bc
+  error [nextflow.exception.ProcessFailedException]: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL)` terminated with an error exit status (1)
+Jul-28 08:17:36.383 [TaskFinalizer-6] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT); work-dir=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/af/12916e97370779c337a8f36dd8bb70
+  error [nextflow.exception.ProcessFailedException]: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT)` terminated with an error exit status (1)
+Jul-28 08:17:36.396 [TaskFinalizer-5] DEBUG nextflow.Session - The following nodes are still active:
+[process] NFCORE_SCRNASEQ:SCRNASEQ:MULTIQC
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: multiqc_files
+  port 1: (value) bound ; channel: multiqc_config
+  port 2: (value) bound ; channel: extra_multiqc_config
+  port 3: (value) bound ; channel: multiqc_logo
+  port 4: (value) bound ; channel: replace_names
+  port 5: (value) bound ; channel: sample_names
+  port 6: (cntrl) -     ; channel: $
+
+Jul-28 08:17:36.400 [TaskFinalizer-5] ERROR nextflow.Nextflow - Pipeline failed. Please refer to troubleshooting docs: https://nf-co.re/docs/usage/troubleshooting
+Jul-28 08:17:36.400 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
+Jul-28 08:17:36.401 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jul-28 08:17:36.401 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-28 08:17:36.404 [Actor Thread 17] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 5; slices: 1; internal sort time: 0.001 s; external sort time: 0.001 s; total time: 0.002 s
+Jul-28 08:17:36.404 [Actor Thread 17] DEBUG nextflow.file.FileCollector - >> temp file exists? true
+Jul-28 08:17:36.406 [Actor Thread 17] DEBUG nextflow.file.FileCollector - Retrieved cached collect-files from: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/work_gexcmo/collect-file/01a47c6326d6d073ca89e0bd70ce984b
+Jul-28 08:17:36.408 [Actor Thread 17] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /scratch/local/8599259/nxf-15903916700200436885
+Jul-28 08:17:36.410 [main] INFO  nextflow.Nextflow - -[0;35m[nf-core/scrnaseq][0;31m Pipeline completed with errors[0m-
+Jul-28 08:17:36.414 [main] WARN  n.processor.TaskPollingMonitor - Killing running tasks (4)
+Jul-28 08:17:36.435 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=8; ignoredCount=0; cachedCount=9; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=4; abortedCount=4; succeedDuration=0ms; failedDuration=36m 1s; cachedDuration=7h 42m 40s;loadCpus=0; loadMemory=0; peakRunning=8; peakCpus=120; peakMemory=720 GB; ]
+Jul-28 08:17:36.435 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Jul-28 08:17:36.436 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Jul-28 08:17:36.841 [main] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
+Jul-28 08:17:36.941 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jul-28 08:17:36.956 [main] INFO  org.pf4j.AbstractPluginManager - Stop plugin 'nf-schema@2.3.0'
+Jul-28 08:17:36.956 [main] DEBUG nextflow.plugin.BasePlugin - Plugin stopped nf-schema
+Jul-28 08:17:36.958 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

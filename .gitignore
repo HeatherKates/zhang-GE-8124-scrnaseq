@@ -1,0 +1,6 @@
+processing/01_fastqc/reports/
+processing/01_fastqc/logs/
+processing/02_cellranger/logs/
+processing/02_cellranger/mouse_hashing_run
+processing/02_cellranger/__mouse_hashing_run.mro
+processing/02_cellranger/refs

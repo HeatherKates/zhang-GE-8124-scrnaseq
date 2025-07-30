@@ -1,0 +1,697 @@
+Jul-27 21:37:26.041 [main] DEBUG nextflow.cli.Launcher - $> nextflow run nf-core/scrnaseq -profile singularity --input samplesheet.csv --gex_cmo_set cmo_reference.csv --cellranger_multi_barcodes barcode_sheet.csv -c nextflow.config --fasta /orange/cancercenter-dept/GENOMES/GENOMES/references/Mus_musculus/Ensembl/GRCm39/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa --gtf /orange/cancercenter-dept/GENOMES/GENOMES/references/Mus_musculus/Ensembl/GRCm39/Mus_musculus.GRCm39.111.gtf --outdir OUTPUT --aligner cellrangermulti --protocol auto -resume
+Jul-27 21:37:26.289 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.6
+Jul-27 21:37:26.384 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/hkates/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.1,nf-k8s@1.0.0,nf-tower@1.11.4,nf-wave@1.12.1
+Jul-27 21:37:26.457 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-27 21:37:26.459 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-27 21:37:26.462 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Jul-27 21:37:26.494 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-27 21:37:26.541 [main] DEBUG nextflow.scm.ProviderConfig - Using SCM config path: /home/hkates/.nextflow/scm
+Jul-27 21:37:28.965 [main] DEBUG nextflow.scm.AssetManager - Git config: /home/hkates/.nextflow/assets/nf-core/scrnaseq/.git/config; branch: master; remote: origin; url: https://github.com/nf-core/scrnaseq.git
+Jul-27 21:37:29.038 [main] DEBUG nextflow.scm.RepositoryFactory - Found Git repository result: [RepositoryFactory]
+Jul-27 21:37:29.063 [main] DEBUG nextflow.scm.AssetManager - Git config: /home/hkates/.nextflow/assets/nf-core/scrnaseq/.git/config; branch: master; remote: origin; url: https://github.com/nf-core/scrnaseq.git
+Jul-27 21:37:33.388 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /home/hkates/.nextflow/assets/nf-core/scrnaseq/nextflow.config
+Jul-27 21:37:33.397 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/nextflow.config
+Jul-27 21:37:33.403 [main] DEBUG nextflow.config.ConfigBuilder - User config file: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/nextflow.config
+Jul-27 21:37:33.419 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/hkates/.nextflow/assets/nf-core/scrnaseq/nextflow.config
+Jul-27 21:37:33.425 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/nextflow.config
+Jul-27 21:37:33.426 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/nextflow.config
+Jul-27 21:37:33.446 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/hkates/.nextflow/secrets/store.json
+Jul-27 21:37:33.449 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@28babeca] - activable => nextflow.secret.LocalSecretsProvider@28babeca
+Jul-27 21:37:33.476 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `singularity`
+Jul-27 21:37:36.855 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `singularity`
+Jul-27 21:37:36.888 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `singularity`
+Jul-27 21:37:36.914 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [bih, cfc_dev, uzl_omics, ifb_core, embl_hd, denbi_qbic, alice, mjolnir_globe, uppmax, giga, incliva, ilifu, ki_luria, uge, icr_alma, rosalind_uge, lugh, mccleary, unibe_ibu, vai, czbiohub_aws, jax, roslin, tes, scw, unc_longleaf, tigem, tubingen_apg, google, apollo, ipop_up, vsc_calcua, test_cellrangermulti, pdc_kth, googlels, ceci_nic5, ccga_cau, humantechnopole, stjude, daisybio, eddie, medair, biowulf, apptainer, bi, bigpurple, adcra, cedars, pawsey_setonix, vsc_kul_uhasselt, pawsey_nimbus, ucl_myriad, utd_ganymede, charliecloud, fred_hutch, seattlechildrens, icr_davros, ceres, arm, munin, rosalind, hasta, cfc, uzh, shu_bmrc, ebi_codon_slurm, ebc, ccga_dx, crick, ku_sund_danhead, marvin, shifter, biohpc_gen, mana, mamba, york_viking, unc_lccc, wehi, awsbatch, wustl_htcf, arcc, ceci_dragon2, imperial, maestro, software_license, cannon, genotoul, nci_gadi, abims, eva_grace, janelia, nu_genomics, googlebatch, oist, sahmri, kaust, alliance_canada, mpcdf, leicester, vsc_ugent, create, sage, cambridge, jex, podman, ebi_codon, cheaha, xanadu, nyu_hpc, test, marjorie, computerome, ucd_sonic, gpu, test_multiome, seg_globe, mssm, sanger, dkfz, bluebear, pasteur, einstein, ethz_euler, m3c, test_full, imb, ucl_cscluster, tuos_stanage, azurebatch, hki, seadragon, crukmi, csiro_petrichor, qmul_apocrita, wave, docker, engaging, gis, hypatia, psmn, eva, unity, cropdiversityhpc, nygc, fgcz, conda, crg, singularity, mpcdf_viper, pe2, self_hosted_runner, tufts, uw_hyak_pedslabs, binac2, debug, genouest, cbe, unsw_katana, utd_juno, gitpod, phoenix, seawulf, uod_hpc, fub_curta, uct_hpc, aws_tower, binac, fsu_draco]
+Jul-27 21:37:37.036 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Jul-27 21:37:37.037 [main] DEBUG nextflow.cli.CmdRun - Launching `https://github.com/nf-core/scrnaseq` [tender_wiles] DSL2 - revision: e0ddddbff9 [master]
+Jul-27 21:37:37.039 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins declared=[nf-schema@2.3.0]
+Jul-27 21:37:37.039 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-27 21:37:37.040 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[nf-schema@2.3.0]
+Jul-27 21:37:37.041 [main] DEBUG nextflow.plugin.PluginUpdater - Installing plugin nf-schema version: 2.3.0
+Jul-27 21:37:37.069 [main] INFO  org.pf4j.AbstractPluginManager - Plugin 'nf-schema@2.3.0' resolved
+Jul-27 21:37:37.070 [main] INFO  org.pf4j.AbstractPluginManager - Start plugin 'nf-schema@2.3.0'
+Jul-27 21:37:37.085 [main] DEBUG nextflow.plugin.BasePlugin - Plugin started nf-schema@2.3.0
+Jul-27 21:37:37.187 [main] DEBUG nextflow.Session - Session UUID: 4b0c68f1-4464-4948-8b87-02a97a65e4bf
+Jul-27 21:37:37.187 [main] DEBUG nextflow.Session - Run name: tender_wiles
+Jul-27 21:37:37.188 [main] DEBUG nextflow.Session - Executor pool size: 2
+Jul-27 21:37:37.206 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jul-27 21:37:37.226 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-27 21:37:37.271 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.04.6 build 5954
+  Created: 01-07-2025 11:27 UTC (07:27 EDT)
+  System: Linux 5.14.0-503.40.1.el9_5.x86_64
+  Runtime: Groovy 4.0.26 on OpenJDK 64-Bit Server VM 20.0.1+9-29
+  Encoding: UTF-8 (UTF-8)
+  Process: 2003346@c0706a-s4.ufhpc [172.16.201.184]
+  CPUs: 1 - Mem: 1007.2 GB (708.7 GB) - Swap: 8 GB (7.7 GB)
+Jul-27 21:37:37.341 [main] DEBUG nextflow.Session - Work-dir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work [lustre]
+Jul-27 21:37:37.419 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-27 21:37:37.445 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-27 21:37:37.482 [main] DEBUG nextflow.Session - Observer factory: ValidationObserverFactory
+Jul-27 21:37:37.524 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Jul-27 21:37:37.611 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-27 21:37:37.622 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 2; maxThreads: 1000
+Jul-27 21:37:37.783 [main] DEBUG nextflow.Session - Session start
+Jul-27 21:37:37.787 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/OUTPUT/pipeline_info/execution_trace_2025-07-27_21-37-33.txt
+Jul-27 21:37:37.838 [main] DEBUG nextflow.Session - Using default localLib path: /home/hkates/.nextflow/assets/nf-core/scrnaseq/lib
+Jul-27 21:37:37.853 [main] DEBUG nextflow.Session - Adding to the classpath library: /home/hkates/.nextflow/assets/nf-core/scrnaseq/lib
+Jul-27 21:37:38.169 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-27 21:37:38.970 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryLog:paramsSummaryLog]; plugin Id: nf-schema
+Jul-27 21:37:38.991 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [validateParameters:validateParameters]; plugin Id: nf-schema
+Jul-27 21:37:39.020 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryMap:paramsSummaryMap]; plugin Id: nf-schema
+Jul-27 21:37:39.022 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [samplesheetToList:samplesheetToList]; plugin Id: nf-schema
+Jul-27 21:37:40.828 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryMap:paramsSummaryMap]; plugin Id: nf-schema
+Jul-27 21:37:41.246 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryLog:paramsSummaryLog]; plugin Id: nf-schema
+Jul-27 21:37:41.247 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [validateParameters:validateParameters]; plugin Id: nf-schema
+Jul-27 21:37:41.249 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryMap:paramsSummaryMap]; plugin Id: nf-schema
+Jul-27 21:37:41.249 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [samplesheetToList:samplesheetToList]; plugin Id: nf-schema
+Jul-27 21:37:47.951 [main] INFO  nextflow.Nextflow - 
+-[2m----------------------------------------------------[0m-
+                                        [0;32m,--.[0;30m/[0;32m,-.[0m
+[0;34m        ___     __   __   __   ___     [0;32m/,-._.--~'[0m
+[0;34m  |\ | |__  __ /  ` /  \ |__) |__         [0;33m}  {[0m
+[0;34m  | \| |       \__, \__/ |  \ |___     [0;32m\`-._,-`-,[0m
+                                        [0;32m`._,._,'[0m
+[0;35m  nf-core/scrnaseq 4.0.0[0m
+-[2m----------------------------------------------------[0m-
+[1mInput/output options[0m
+  [0;34minput                    : [0;32msamplesheet.csv[0m
+  [0;34moutdir                   : [0;32mOUTPUT[0m
+
+[1mMandatory arguments[0m
+  [0;34maligner                  : [0;32mcellrangermulti[0m
+
+[1mReference genome options[0m
+  [0;34mfasta                    : [0;32m/orange/cancercenter-dept/GENOMES/GENOMES/references/Mus_musculus/Ensembl/GRCm39/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa[0m
+  [0;34mgtf                      : [0;32m/orange/cancercenter-dept/GENOMES/GENOMES/references/Mus_musculus/Ensembl/GRCm39/Mus_musculus.GRCm39.111.gtf[0m
+  [0;34msave_align_intermeds     : [0;32mtrue[0m
+
+[1mCellranger Multi options[0m
+  [0;34mgex_cmo_set              : [0;32mcmo_reference.csv[0m
+  [0;34mcellranger_multi_barcodes: [0;32mbarcode_sheet.csv[0m
+
+[1mGeneric options[0m
+  [0;34mtrace_report_suffix      : [0;32m2025-07-27_21-37-33[0m
+
+[1mCore Nextflow options[0m
+  [0;34mrevision                 : [0;32mmaster[0m
+  [0;34mrunName                  : [0;32mtender_wiles[0m
+  [0;34mcontainerEngine          : [0;32msingularity[0m
+  [0;34mlaunchDir                : [0;32m/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline[0m
+  [0;34mworkDir                  : [0;32m/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work[0m
+  [0;34mprojectDir               : [0;32m/home/hkates/.nextflow/assets/nf-core/scrnaseq[0m
+  [0;34muserName                 : [0;32mhkates[0m
+  [0;34mprofile                  : [0;32msingularity[0m
+  [0;34mconfigFiles              : [0;32m/home/hkates/.nextflow/assets/nf-core/scrnaseq/nextflow.config, /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/nextflow.config, /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/nextflow.config[0m
+
+!! Only displaying parameters that differ from the pipeline defaults !!
+-[2m----------------------------------------------------[0m-
+* The pipeline
+    https://doi.org/10.5281/zenodo.3568187
+
+* The nf-core framework
+    https://doi.org/10.1038/s41587-020-0439-x
+
+* Software dependencies
+    https://github.com/nf-core/scrnaseq/blob/master/CITATIONS.md
+
+Jul-27 21:37:47.954 [main] DEBUG n.validation.ValidationExtension - Starting parameters validation
+Jul-27 21:37:48.035 [main] WARN  n.validation.ValidationExtension - The following invalid input values have been detected:
+
+* --monochromeLogs: null
+
+
+Jul-27 21:37:48.313 [main] DEBUG nextflow.validation.SchemaEvaluator - Started validating /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/samplesheet.csv
+Jul-27 21:37:48.662 [main] DEBUG nextflow.validation.SchemaEvaluator - Validation of file 'samplesheet.csv' passed!
+Jul-27 21:37:48.664 [main] DEBUG n.v.FormatDirectoryPathEvaluator - Cloud blob storage paths are not supported by 'FormatDirectoryPathEvaluator': 's3://ngi-igenomes/igenomes/'
+Jul-27 21:37:48.668 [main] DEBUG n.validation.ValidationExtension - Finishing parameters validation
+Jul-27 21:37:49.150 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC
+Jul-27 21:37:49.153 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:FASTQC` matches process NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC
+Jul-27 21:37:49.182 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-27 21:37:49.183 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-27 21:37:49.208 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Jul-27 21:37:49.227 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Jul-27 21:37:49.240 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Jul-27 21:37:49.270 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Jul-27 21:37:49.296 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC': maxForks=0; fair=false; array=0
+Jul-27 21:37:49.427 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name NFCORE_SCRNASEQ:SCRNASEQ:GTF_GENE_FILTER
+Jul-27 21:37:49.428 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GTF_GENE_FILTER` matches process NFCORE_SCRNASEQ:SCRNASEQ:GTF_GENE_FILTER
+Jul-27 21:37:49.431 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-27 21:37:49.431 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-27 21:37:49.445 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:GTF_GENE_FILTER': maxForks=0; fair=false; array=0
+Jul-27 21:37:49.506 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:PARSE_CELLRANGERMULTI_SAMPLESHEET
+Jul-27 21:37:49.524 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-27 21:37:49.524 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-27 21:37:49.525 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:PARSE_CELLRANGERMULTI_SAMPLESHEET': maxForks=0; fair=false; array=0
+Jul-27 21:37:49.593 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKGTF
+Jul-27 21:37:49.594 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CELLRANGER_MKGTF` matches process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKGTF
+Jul-27 21:37:49.612 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-27 21:37:49.613 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-27 21:37:49.614 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKGTF': maxForks=0; fair=false; array=0
+Jul-27 21:37:49.627 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high` matches labels `process_high` for process with name NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKREF
+Jul-27 21:37:49.641 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CELLRANGER_MKREF` matches process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKREF
+Jul-27 21:37:49.645 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-27 21:37:49.645 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-27 21:37:49.646 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKREF': maxForks=0; fair=false; array=0
+Jul-27 21:37:49.673 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high` matches labels `process_high` for process with name NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKVDJREF
+Jul-27 21:37:49.674 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CELLRANGER_MKVDJREF` matches process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKVDJREF
+Jul-27 21:37:49.678 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-27 21:37:49.678 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-27 21:37:49.679 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKVDJREF': maxForks=0; fair=false; array=0
+Jul-27 21:37:49.741 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high` matches labels `process_high` for process with name NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI
+Jul-27 21:37:49.759 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI` matches process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI
+Jul-27 21:37:49.763 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-27 21:37:49.764 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-27 21:37:49.764 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI': maxForks=0; fair=false; array=0
+Jul-27 21:37:49.850 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_SCRNASEQ:SCRNASEQ:MTX_TO_H5AD
+Jul-27 21:37:49.851 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MTX_TO_H5AD|CONCAT_H5AD|ANNDATAR_CONVERT` matches process NFCORE_SCRNASEQ:SCRNASEQ:MTX_TO_H5AD
+Jul-27 21:37:49.870 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-27 21:37:49.870 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-27 21:37:49.870 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:MTX_TO_H5AD': maxForks=0; fair=false; array=0
+Jul-27 21:37:49.923 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium,process_gpu` for process with name NFCORE_SCRNASEQ:SCRNASEQ:H5AD_REMOVEBACKGROUND_BARCODES_CELLBENDER_ANNDATA:CELLBENDER_REMOVEBACKGROUND
+Jul-27 21:37:49.927 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_gpu` matches labels `process_medium,process_gpu` for process with name NFCORE_SCRNASEQ:SCRNASEQ:H5AD_REMOVEBACKGROUND_BARCODES_CELLBENDER_ANNDATA:CELLBENDER_REMOVEBACKGROUND
+Jul-27 21:37:49.928 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CELLBENDER_REMOVEBACKGROUND` matches process NFCORE_SCRNASEQ:SCRNASEQ:H5AD_REMOVEBACKGROUND_BARCODES_CELLBENDER_ANNDATA:CELLBENDER_REMOVEBACKGROUND
+Jul-27 21:37:49.951 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-27 21:37:49.951 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-27 21:37:49.952 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:H5AD_REMOVEBACKGROUND_BARCODES_CELLBENDER_ANNDATA:CELLBENDER_REMOVEBACKGROUND': maxForks=0; fair=false; array=0
+Jul-27 21:37:49.994 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_SCRNASEQ:SCRNASEQ:H5AD_REMOVEBACKGROUND_BARCODES_CELLBENDER_ANNDATA:ANNDATA_BARCODES
+Jul-27 21:37:49.994 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ANNDATA_BARCODES` matches process NFCORE_SCRNASEQ:SCRNASEQ:H5AD_REMOVEBACKGROUND_BARCODES_CELLBENDER_ANNDATA:ANNDATA_BARCODES
+Jul-27 21:37:50.011 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-27 21:37:50.011 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-27 21:37:50.011 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:H5AD_REMOVEBACKGROUND_BARCODES_CELLBENDER_ANNDATA:ANNDATA_BARCODES': maxForks=0; fair=false; array=0
+Jul-27 21:37:50.041 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_SCRNASEQ:SCRNASEQ:H5AD_CONVERSION:CONCAT_H5AD
+Jul-27 21:37:50.042 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MTX_TO_H5AD|CONCAT_H5AD|ANNDATAR_CONVERT` matches process NFCORE_SCRNASEQ:SCRNASEQ:H5AD_CONVERSION:CONCAT_H5AD
+Jul-27 21:37:50.045 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-27 21:37:50.046 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-27 21:37:50.046 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:H5AD_CONVERSION:CONCAT_H5AD': maxForks=0; fair=false; array=0
+Jul-27 21:37:50.074 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_SCRNASEQ:SCRNASEQ:H5AD_CONVERSION:ANNDATAR_CONVERT
+Jul-27 21:37:50.075 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MTX_TO_H5AD|CONCAT_H5AD|ANNDATAR_CONVERT` matches process NFCORE_SCRNASEQ:SCRNASEQ:H5AD_CONVERSION:ANNDATAR_CONVERT
+Jul-27 21:37:50.083 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-27 21:37:50.084 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-27 21:37:50.085 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:H5AD_CONVERSION:ANNDATAR_CONVERT': maxForks=0; fair=false; array=0
+Jul-27 21:37:50.357 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_SCRNASEQ:SCRNASEQ:MULTIQC
+Jul-27 21:37:50.361 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MULTIQC` matches process NFCORE_SCRNASEQ:SCRNASEQ:MULTIQC
+Jul-27 21:37:50.369 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-27 21:37:50.369 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-27 21:37:50.370 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'NFCORE_SCRNASEQ:SCRNASEQ:MULTIQC': maxForks=0; fair=false; array=0
+Jul-27 21:37:50.409 [main] DEBUG nextflow.Session - Config process names validation disabled as requested
+Jul-27 21:37:50.427 [main] DEBUG nextflow.Session - Igniting dataflow network (30)
+Jul-27 21:37:50.460 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC
+Jul-27 21:37:50.473 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:GTF_GENE_FILTER
+Jul-27 21:37:50.473 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:PARSE_CELLRANGERMULTI_SAMPLESHEET
+Jul-27 21:37:50.476 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKGTF
+Jul-27 21:37:50.599 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKREF
+Jul-27 21:37:50.600 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKVDJREF
+Jul-27 21:37:50.600 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI
+Jul-27 21:37:50.603 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:MTX_TO_H5AD
+Jul-27 21:37:50.603 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:H5AD_REMOVEBACKGROUND_BARCODES_CELLBENDER_ANNDATA:CELLBENDER_REMOVEBACKGROUND
+Jul-27 21:37:50.603 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:H5AD_REMOVEBACKGROUND_BARCODES_CELLBENDER_ANNDATA:ANNDATA_BARCODES
+Jul-27 21:37:50.603 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:H5AD_CONVERSION:CONCAT_H5AD
+Jul-27 21:37:50.603 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:H5AD_CONVERSION:ANNDATAR_CONVERT
+Jul-27 21:37:50.648 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_SCRNASEQ:SCRNASEQ:MULTIQC
+Jul-27 21:37:50.649 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_116619ccb325236c: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/cellranger/count/main.nf
+  Script_2cdf1dd129ca8d6b: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/local/kallisto_bustools.nf
+  Script_2422cb5c866a3f02: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/cellranger/mkgtf/main.nf
+  Script_215a636da7ab24a2: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/nf-core/utils_nfschema_plugin/main.nf
+  Script_17ce930509503341: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/local/starsolo.nf
+  Script_a5e3a56fa0f5753f: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/local/align_cellrangerarc.nf
+  Script_5c4e8d4051efa81e: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/nf-core/utils_nfcore_pipeline/main.nf
+  Script_2ce2cea66f33b0c9: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/local/parse_cellrangermulti_samplesheet.nf
+  Script_01678c41b497280c: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/local/alevinqc.nf
+  Script_b6f2f5397ff1b307: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/local/gtf_gene_filter.nf
+  Script_0690c94ccbc80cf8: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/anndata/barcodes/main.nf
+  Script_f484bb04f71d5cb3: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/cellranger/multi/main.nf
+  Script_85014429899d4eed: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/cellrangerarc/count/main.nf
+  Script_2b5dc2db40c0c7f1: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/local/simpleaf.nf
+  Script_0fdb2e5f8575be0c: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/multiqc/main.nf
+  Script_9920ace3f63f7548: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/local/concat_h5ad.nf
+  Script_67f289d1fa44410a: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/kallistobustools/count/main.nf
+  Script_a242b7d3e1522c1a: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/local/align_cellranger.nf
+  Script_c224a5d34be70db1: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/nf-core/h5ad_removebackground_barcodes_cellbender_anndata/main.nf
+  Script_0cb99b50b73564f3: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/simpleaf/index/main.nf
+  Script_e6da1e6a0fbb4bd4: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/simpleaf/quant/main.nf
+  Script_b8ef320e712f03dd: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/cellrangerarc/mkgtf/main.nf
+  Script_4f612cfd8c52e8cd: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/nf-core/utils_nextflow_pipeline/main.nf
+  Script_c12f64b9d72aaf58: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/local/star_align.nf
+  Script_3c99494cecee2398: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/local/h5ad_conversion.nf
+  Script_8b4cd5023b0747bc: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/star/genomegenerate/main.nf
+  Script_7db0c40b9e083db8: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/local/mtx_to_h5ad.nf
+  Script_e04fff270dc1ec83: /home/hkates/.nextflow/assets/nf-core/scrnaseq/main.nf
+  Script_7fc9d40ebc5611d3: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/cellranger/mkref/main.nf
+  Script_bbcd84f7538bc350: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/local/utils_nfcore_scrnaseq_pipeline/main.nf
+  Script_7d26d205472ec618: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/local/fastqc.nf
+  Script_f535f8fb412be0f3: /home/hkates/.nextflow/assets/nf-core/scrnaseq/workflows/scrnaseq.nf
+  Script_a415462e1630ff87: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/cellbender/removebackground/main.nf
+  Script_dc41886bdbd95b0b: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/fastqc/main.nf
+  Script_b6e854e2f4a9b0b7: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/kallistobustools/ref/main.nf
+  Script_ee6d5a1dfbefe9e1: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/cellranger/mkvdjref/main.nf
+  Script_a6b84a8d8db37c9d: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/gunzip/main.nf
+  Script_13d4ec1d4f43657c: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/local/anndatar_convert.nf
+  Script_fd9ffb2ce3d24fd1: /home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/cellrangerarc/mkref/main.nf
+  Script_cf189f8d1668d163: /home/hkates/.nextflow/assets/nf-core/scrnaseq/subworkflows/local/align_cellrangermulti.nf
+Jul-27 21:37:50.649 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jul-27 21:37:50.649 [main] DEBUG nextflow.Session - Session await
+Jul-27 21:37:50.735 [Actor Thread 8] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=https://depot.galaxyproject.org/singularity/python:3.9--1; path=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/singularity/depot.galaxyproject.org-singularity-python-3.9--1.img
+Jul-27 21:37:50.736 [Actor Thread 17] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0; path=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/singularity/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img
+Jul-27 21:37:50.768 [Actor Thread 6] DEBUG nextflow.util.HashBuilder - Hash asset file sha-256: /home/hkates/.nextflow/assets/nf-core/scrnaseq/bin/check_cellrangermulti.py
+Jul-27 21:37:50.785 [Actor Thread 15] DEBUG nextflow.util.HashBuilder - Hash asset file sha-256: /home/hkates/.nextflow/assets/nf-core/scrnaseq/bin/filter_gtf_for_genes_in_genome.py
+Jul-27 21:37:50.865 [Actor Thread 1] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 1; slices: 1; internal sort time: 0.001 s; external sort time: 0.001 s; total time: 0.002 s
+Jul-27 21:37:50.867 [Actor Thread 1] DEBUG nextflow.file.FileCollector - >> temp file exists? false
+Jul-27 21:37:50.867 [Actor Thread 1] DEBUG nextflow.file.FileCollector - Missed collect-file cache -- cause: java.nio.file.NoSuchFileException: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/collect-file/ca44eb63c450a229eb3c3260364fc6e3
+Jul-27 21:37:50.872 [Actor Thread 12] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 1; slices: 1; internal sort time: 0.0 s; external sort time: 0.0 s; total time: 0.0 s
+Jul-27 21:37:50.875 [Actor Thread 12] DEBUG nextflow.file.FileCollector - >> temp file exists? false
+Jul-27 21:37:50.875 [Actor Thread 12] DEBUG nextflow.file.FileCollector - Missed collect-file cache -- cause: java.nio.file.NoSuchFileException: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/collect-file/4b82739b9dc8ff121e1758cfd682df0c
+Jul-27 21:37:50.879 [Actor Thread 1] DEBUG nextflow.file.FileCollector - Saved collect-files list to: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/collect-file/ca44eb63c450a229eb3c3260364fc6e3
+Jul-27 21:37:50.887 [Actor Thread 1] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /scratch/local/8547654/nxf-1327916550269104300
+Jul-27 21:37:50.903 [Actor Thread 12] DEBUG nextflow.file.FileCollector - Saved collect-files list to: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/collect-file/4b82739b9dc8ff121e1758cfd682df0c
+Jul-27 21:37:50.904 [Actor Thread 12] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /scratch/local/8547654/nxf-14248280119270112438
+Jul-27 21:37:50.937 [Actor Thread 15] INFO  nextflow.processor.TaskProcessor - [ed/5224a9] Cached process > NFCORE_SCRNASEQ:SCRNASEQ:GTF_GENE_FILTER (Mus_musculus.GRCm39.dna_sm.primary_assembly.fa)
+Jul-27 21:37:50.945 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [67/9776ec] Cached process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:PARSE_CELLRANGERMULTI_SAMPLESHEET
+Jul-27 21:37:50.996 [Actor Thread 1] WARN  nextflow.container.SingularityCache - Singularity cache directory has not been defined -- Remote image will be stored in the path: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/singularity -- Use the environment variable NXF_SINGULARITY_CACHEDIR to specify a different location
+Jul-27 21:37:50.998 [Actor Thread 1] INFO  nextflow.container.SingularityCache - Pulling Singularity image docker://quay.io/nf-core/cellranger:8.0.0 [cache /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/singularity/quay.io-nf-core-cellranger-8.0.0.img]
+Jul-27 21:37:51.426 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL) > jobId: 8547867; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/e3/ac9543a8e9b53c95f2330959a979a2
+Jul-27 21:37:51.426 [Task submitter] INFO  nextflow.Session - [e3/ac9543] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL)
+Jul-27 21:37:51.513 [Actor Thread 6] DEBUG nextflow.processor.TaskProcessor - Process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:PARSE_CELLRANGERMULTI_SAMPLESHEET > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+Jul-27 21:37:51.556 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT) > jobId: 8547868; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/9d/953687e6b22f045641977aa80e631c
+Jul-27 21:37:51.556 [Task submitter] INFO  nextflow.Session - [9d/953687] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT)
+Jul-27 21:37:51.629 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL) > jobId: 8547869; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/46/47ec0b6ec0e4ef80fa035e92cad28b
+Jul-27 21:37:51.629 [Task submitter] INFO  nextflow.Session - [46/47ec0b] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL)
+Jul-27 21:37:51.746 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT) > jobId: 8547870; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/cd/ba1df048fb7fff337253398a0747df
+Jul-27 21:37:51.747 [Task submitter] INFO  nextflow.Session - [cd/ba1df0] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT)
+Jul-27 21:37:51.805 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL) > jobId: 8547872; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/85/723a4031af97ac3282e7e2902a0dcc
+Jul-27 21:37:51.806 [Task submitter] INFO  nextflow.Session - [85/723a40] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL)
+Jul-27 21:37:51.861 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT) > jobId: 8547873; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/86/efdc666e9c965c3036c8ca6294c730
+Jul-27 21:37:51.861 [Task submitter] INFO  nextflow.Session - [86/efdc66] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT)
+Jul-27 21:37:51.935 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT) > jobId: 8547875; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/15/7f9b7308a5e51322e6cdaf58c61e19
+Jul-27 21:37:51.935 [Task submitter] INFO  nextflow.Session - [15/7f9b73] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT)
+Jul-27 21:37:52.005 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT) > jobId: 8547876; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/30/ecb27b177a4ab04ad0c4d25112d6c6
+Jul-27 21:37:52.005 [Task submitter] INFO  nextflow.Session - [30/ecb27b] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT)
+Jul-27 21:37:52.053 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL) > jobId: 8547877; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/ed/6b8f8dd215aabb7627a6bd5f6e8e6c
+Jul-27 21:37:52.053 [Task submitter] INFO  nextflow.Session - [ed/6b8f8d] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL)
+Jul-27 21:37:52.109 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT) > jobId: 8547879; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/dc/34aab2530eee23e4d002fd39330015
+Jul-27 21:37:52.109 [Task submitter] INFO  nextflow.Session - [dc/34aab2] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT)
+Jul-27 21:37:52.153 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL) > jobId: 8547880; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/6f/e58e95a4901fbf3147cd6251e6b250
+Jul-27 21:37:52.153 [Task submitter] INFO  nextflow.Session - [6f/e58e95] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL)
+Jul-27 21:37:52.199 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL) > jobId: 8547881; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/8b/14c30010c044fdfc773e092d0e7086
+Jul-27 21:37:52.199 [Task submitter] INFO  nextflow.Session - [8b/14c300] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL)
+Jul-27 21:42:54.269 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 12 -- submitted tasks are shown below
+~> TaskHandler[jobId: 8547867; id: 3; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/e3/ac9543a8e9b53c95f2330959a979a2 started: 1753666829265; exited: -; ]
+~> TaskHandler[jobId: 8547868; id: 4; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/9d/953687e6b22f045641977aa80e631c started: 1753666829286; exited: -; ]
+~> TaskHandler[jobId: 8547869; id: 5; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/46/47ec0b6ec0e4ef80fa035e92cad28b started: 1753666829289; exited: -; ]
+~> TaskHandler[jobId: 8547870; id: 7; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/cd/ba1df048fb7fff337253398a0747df started: 1753666829291; exited: -; ]
+~> TaskHandler[jobId: 8547872; id: 9; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/85/723a4031af97ac3282e7e2902a0dcc started: 1753666829295; exited: -; ]
+~> TaskHandler[jobId: 8547873; id: 8; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/86/efdc666e9c965c3036c8ca6294c730 started: 1753666829302; exited: -; ]
+~> TaskHandler[jobId: 8547875; id: 10; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/15/7f9b7308a5e51322e6cdaf58c61e19 started: 1753666829309; exited: -; ]
+~> TaskHandler[jobId: 8547876; id: 12; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/30/ecb27b177a4ab04ad0c4d25112d6c6 started: 1753666829311; exited: -; ]
+~> TaskHandler[jobId: 8547877; id: 11; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/ed/6b8f8dd215aabb7627a6bd5f6e8e6c started: 1753666829313; exited: -; ]
+~> TaskHandler[jobId: 8547879; id: 14; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/dc/34aab2530eee23e4d002fd39330015 started: 1753666829315; exited: -; ]
+.. remaining tasks omitted.
+Jul-27 21:44:06.314 [Actor Thread 1] DEBUG nextflow.container.SingularityCache - Singularity pull complete image=docker://quay.io/nf-core/cellranger:8.0.0 path=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/singularity/quay.io-nf-core-cellranger-8.0.0.img
+Jul-27 21:44:06.410 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKGTF (Mus_musculus.GRCm39.dna_sm.primary_assembly_genes.gtf) > jobId: 8548694; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/59/45cb9b03fe8e5b335de22c1be413b9
+Jul-27 21:44:06.411 [Task submitter] INFO  nextflow.Session - [59/45cb9b] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKGTF (Mus_musculus.GRCm39.dna_sm.primary_assembly_genes.gtf)
+Jul-27 21:45:24.280 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8547867; id: 3; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL); status: COMPLETED; exit: 0; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/e3/ac9543a8e9b53c95f2330959a979a2 started: 1753666829265; exited: 2025-07-28T01:45:20Z; ]
+Jul-27 21:45:24.281 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-27 21:45:24.427 [TaskFinalizer-1] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-27 21:45:44.278 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8547869; id: 5; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL); status: COMPLETED; exit: 0; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/46/47ec0b6ec0e4ef80fa035e92cad28b started: 1753666829289; exited: 2025-07-28T01:45:39Z; ]
+Jul-27 21:45:49.279 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8547870; id: 7; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT); status: COMPLETED; exit: 0; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/cd/ba1df048fb7fff337253398a0747df started: 1753666829291; exited: 2025-07-28T01:45:46Z; ]
+Jul-27 21:46:14.281 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8547868; id: 4; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT); status: COMPLETED; exit: 0; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/9d/953687e6b22f045641977aa80e631c started: 1753666829286; exited: 2025-07-28T01:46:12Z; ]
+Jul-27 21:47:54.281 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 9 -- submitted tasks are shown below
+~> TaskHandler[jobId: 8547872; id: 9; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/85/723a4031af97ac3282e7e2902a0dcc started: 1753666829295; exited: -; ]
+~> TaskHandler[jobId: 8547873; id: 8; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/86/efdc666e9c965c3036c8ca6294c730 started: 1753666829302; exited: -; ]
+~> TaskHandler[jobId: 8547875; id: 10; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/15/7f9b7308a5e51322e6cdaf58c61e19 started: 1753666829309; exited: -; ]
+~> TaskHandler[jobId: 8547876; id: 12; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/30/ecb27b177a4ab04ad0c4d25112d6c6 started: 1753666829311; exited: -; ]
+~> TaskHandler[jobId: 8547877; id: 11; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/ed/6b8f8dd215aabb7627a6bd5f6e8e6c started: 1753666829313; exited: -; ]
+~> TaskHandler[jobId: 8547879; id: 14; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/dc/34aab2530eee23e4d002fd39330015 started: 1753666829315; exited: -; ]
+~> TaskHandler[jobId: 8547880; id: 13; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/6f/e58e95a4901fbf3147cd6251e6b250 started: 1753666829319; exited: -; ]
+~> TaskHandler[jobId: 8547881; id: 15; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/8b/14c30010c044fdfc773e092d0e7086 started: 1753666829325; exited: -; ]
+~> TaskHandler[jobId: 8548694; id: 6; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKGTF (Mus_musculus.GRCm39.dna_sm.primary_assembly_genes.gtf); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/59/45cb9b03fe8e5b335de22c1be413b9 started: 1753667199280; exited: -; ]
+Jul-27 21:47:59.302 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8548694; id: 6; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKGTF (Mus_musculus.GRCm39.dna_sm.primary_assembly_genes.gtf); status: COMPLETED; exit: 0; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/59/45cb9b03fe8e5b335de22c1be413b9 started: 1753667199280; exited: 2025-07-28T01:47:56Z; ]
+Jul-27 21:47:59.644 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKVDJREF (Mus_musculus.GRCm39.dna_sm.primary_assembly.fa) > jobId: 8549188; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/dc/be7c83d9c8a4eb6f144fa436ce26b9
+Jul-27 21:47:59.646 [Task submitter] INFO  nextflow.Session - [dc/be7c83] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKVDJREF (Mus_musculus.GRCm39.dna_sm.primary_assembly.fa)
+Jul-27 21:47:59.828 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKREF (Mus_musculus.GRCm39.dna_sm.primary_assembly.fa) > jobId: 8549189; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/35/c941b016d2487594215760709be9b6
+Jul-27 21:47:59.828 [Task submitter] INFO  nextflow.Session - [35/c941b0] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKREF (Mus_musculus.GRCm39.dna_sm.primary_assembly.fa)
+Jul-27 21:51:04.290 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8549188; id: 16; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKVDJREF (Mus_musculus.GRCm39.dna_sm.primary_assembly.fa); status: COMPLETED; exit: 0; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/dc/be7c83d9c8a4eb6f144fa436ce26b9 started: 1753667384289; exited: 2025-07-28T01:51:01Z; ]
+Jul-27 21:52:54.289 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 9 -- submitted tasks are shown below
+~> TaskHandler[jobId: 8547872; id: 9; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/85/723a4031af97ac3282e7e2902a0dcc started: 1753666829295; exited: -; ]
+~> TaskHandler[jobId: 8547873; id: 8; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/86/efdc666e9c965c3036c8ca6294c730 started: 1753666829302; exited: -; ]
+~> TaskHandler[jobId: 8547875; id: 10; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/15/7f9b7308a5e51322e6cdaf58c61e19 started: 1753666829309; exited: -; ]
+~> TaskHandler[jobId: 8547876; id: 12; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/30/ecb27b177a4ab04ad0c4d25112d6c6 started: 1753666829311; exited: -; ]
+~> TaskHandler[jobId: 8547877; id: 11; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/ed/6b8f8dd215aabb7627a6bd5f6e8e6c started: 1753666829313; exited: -; ]
+~> TaskHandler[jobId: 8547879; id: 14; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/dc/34aab2530eee23e4d002fd39330015 started: 1753666829315; exited: -; ]
+~> TaskHandler[jobId: 8547880; id: 13; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/6f/e58e95a4901fbf3147cd6251e6b250 started: 1753666829319; exited: -; ]
+~> TaskHandler[jobId: 8547881; id: 15; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/8b/14c30010c044fdfc773e092d0e7086 started: 1753666829325; exited: -; ]
+~> TaskHandler[jobId: 8549189; id: 17; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKREF (Mus_musculus.GRCm39.dna_sm.primary_assembly.fa); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/35/c941b016d2487594215760709be9b6 started: 1753667384291; exited: -; ]
+Jul-27 21:56:29.303 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8547881; id: 15; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL); status: COMPLETED; exit: 0; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/8b/14c30010c044fdfc773e092d0e7086 started: 1753666829325; exited: 2025-07-28T01:56:27Z; ]
+Jul-27 21:56:49.304 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8547880; id: 13; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL); status: COMPLETED; exit: 0; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/6f/e58e95a4901fbf3147cd6251e6b250 started: 1753666829319; exited: 2025-07-28T01:56:45Z; ]
+Jul-27 21:57:39.305 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8547876; id: 12; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT); status: COMPLETED; exit: 0; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/30/ecb27b177a4ab04ad0c4d25112d6c6 started: 1753666829311; exited: 2025-07-28T01:57:37Z; ]
+Jul-27 21:57:54.302 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 6 -- submitted tasks are shown below
+~> TaskHandler[jobId: 8547872; id: 9; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/85/723a4031af97ac3282e7e2902a0dcc started: 1753666829295; exited: -; ]
+~> TaskHandler[jobId: 8547873; id: 8; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/86/efdc666e9c965c3036c8ca6294c730 started: 1753666829302; exited: -; ]
+~> TaskHandler[jobId: 8547875; id: 10; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/15/7f9b7308a5e51322e6cdaf58c61e19 started: 1753666829309; exited: -; ]
+~> TaskHandler[jobId: 8547877; id: 11; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/ed/6b8f8dd215aabb7627a6bd5f6e8e6c started: 1753666829313; exited: -; ]
+~> TaskHandler[jobId: 8547879; id: 14; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/dc/34aab2530eee23e4d002fd39330015 started: 1753666829315; exited: -; ]
+~> TaskHandler[jobId: 8549189; id: 17; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKREF (Mus_musculus.GRCm39.dna_sm.primary_assembly.fa); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/35/c941b016d2487594215760709be9b6 started: 1753667384291; exited: -; ]
+Jul-27 22:00:59.334 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8547879; id: 14; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT); status: COMPLETED; exit: 0; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/dc/34aab2530eee23e4d002fd39330015 started: 1753666829315; exited: 2025-07-28T02:00:59Z; ]
+Jul-27 22:02:54.314 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 5 -- submitted tasks are shown below
+~> TaskHandler[jobId: 8547872; id: 9; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/85/723a4031af97ac3282e7e2902a0dcc started: 1753666829295; exited: -; ]
+~> TaskHandler[jobId: 8547873; id: 8; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/86/efdc666e9c965c3036c8ca6294c730 started: 1753666829302; exited: -; ]
+~> TaskHandler[jobId: 8547875; id: 10; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/15/7f9b7308a5e51322e6cdaf58c61e19 started: 1753666829309; exited: -; ]
+~> TaskHandler[jobId: 8547877; id: 11; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/ed/6b8f8dd215aabb7627a6bd5f6e8e6c started: 1753666829313; exited: -; ]
+~> TaskHandler[jobId: 8549189; id: 17; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKREF (Mus_musculus.GRCm39.dna_sm.primary_assembly.fa); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/35/c941b016d2487594215760709be9b6 started: 1753667384291; exited: -; ]
+Jul-27 22:05:54.358 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8549189; id: 17; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MKREF (Mus_musculus.GRCm39.dna_sm.primary_assembly.fa); status: COMPLETED; exit: 0; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/35/c941b016d2487594215760709be9b6 started: 1753667384291; exited: 2025-07-28T02:05:53Z; ]
+Jul-27 22:05:54.842 [Actor Thread 25] DEBUG nextflow.util.HashBuilder - Hash asset file sha-256: /home/hkates/.nextflow/assets/nf-core/scrnaseq/assets/EMPTY
+Jul-27 22:05:54.991 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL) > jobId: 8551010; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/7a/3ccea8eb49c1f2531e884c877c478e
+Jul-27 22:05:54.992 [Task submitter] INFO  nextflow.Session - [7a/3ccea8] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL)
+Jul-27 22:05:55.109 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT) > jobId: 8551011; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/90/ee7c9166721ae75212e2316355678b
+Jul-27 22:05:55.109 [Task submitter] INFO  nextflow.Session - [90/ee7c91] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT)
+Jul-27 22:05:55.198 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL) > jobId: 8551012; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/68/a23ec3ad8db2b7684aea44b687d1df
+Jul-27 22:05:55.199 [Task submitter] INFO  nextflow.Session - [68/a23ec3] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL)
+Jul-27 22:05:55.286 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT) > jobId: 8551013; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/1a/53357d88ff4166933e2582c47d8d1f
+Jul-27 22:05:55.287 [Task submitter] INFO  nextflow.Session - [1a/53357d] Submitted process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT)
+Jul-27 22:07:54.331 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 8 -- submitted tasks are shown below
+~> TaskHandler[jobId: 8547872; id: 9; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YL); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/85/723a4031af97ac3282e7e2902a0dcc started: 1753666829295; exited: -; ]
+~> TaskHandler[jobId: 8547873; id: 8; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (YT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/86/efdc666e9c965c3036c8ca6294c730 started: 1753666829302; exited: -; ]
+~> TaskHandler[jobId: 8547875; id: 10; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AT); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/15/7f9b7308a5e51322e6cdaf58c61e19 started: 1753666829309; exited: -; ]
+~> TaskHandler[jobId: 8547877; id: 11; name: NFCORE_SCRNASEQ:SCRNASEQ:FASTQC_CHECK:FASTQC (AL); status: RUNNING; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/ed/6b8f8dd215aabb7627a6bd5f6e8e6c started: 1753666829313; exited: -; ]
+~> TaskHandler[jobId: 8551010; id: 18; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL); status: SUBMITTED; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/7a/3ccea8eb49c1f2531e884c877c478e started: -; exited: -; ]
+~> TaskHandler[jobId: 8551011; id: 19; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT); status: SUBMITTED; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/90/ee7c9166721ae75212e2316355678b started: -; exited: -; ]
+~> TaskHandler[jobId: 8551012; id: 20; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL); status: SUBMITTED; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/68/a23ec3ad8db2b7684aea44b687d1df started: -; exited: -; ]
+~> TaskHandler[jobId: 8551013; id: 21; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT); status: SUBMITTED; exit: -; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/1a/53357d88ff4166933e2582c47d8d1f started: -; exited: -; ]
+Jul-27 22:08:29.335 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8551010; id: 18; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL); status: COMPLETED; exit: 1; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/7a/3ccea8eb49c1f2531e884c877c478e started: 1753668499334; exited: 2025-07-28T02:08:28Z; ]
+Jul-27 22:08:29.347 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8551011; id: 19; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT); status: COMPLETED; exit: 1; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/90/ee7c9166721ae75212e2316355678b started: 1753668499338; exited: 2025-07-28T02:08:28Z; ]
+Jul-27 22:08:29.350 [TaskFinalizer-2] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL); work-dir=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/7a/3ccea8eb49c1f2531e884c877c478e
+  error [nextflow.exception.ProcessFailedException]: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL)` terminated with an error exit status (1)
+Jul-27 22:08:29.353 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8551012; id: 20; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL); status: COMPLETED; exit: 1; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/68/a23ec3ad8db2b7684aea44b687d1df started: 1753668499339; exited: 2025-07-28T02:08:28Z; ]
+Jul-27 22:08:29.707 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8551013; id: 21; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT); status: COMPLETED; exit: 1; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/1a/53357d88ff4166933e2582c47d8d1f started: 1753668499341; exited: 2025-07-28T02:08:28Z; ]
+Jul-27 22:08:29.731 [TaskFinalizer-2] INFO  nextflow.processor.TaskProcessor - [7a/3ccea8] NOTE: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL)` terminated with an error exit status (1) -- Execution is retried (1)
+Jul-27 22:08:29.733 [TaskFinalizer-4] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL); work-dir=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/68/a23ec3ad8db2b7684aea44b687d1df
+  error [nextflow.exception.ProcessFailedException]: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL)` terminated with an error exit status (1)
+Jul-27 22:08:29.756 [TaskFinalizer-4] INFO  nextflow.processor.TaskProcessor - [68/a23ec3] NOTE: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL)` terminated with an error exit status (1) -- Execution is retried (1)
+Jul-27 22:08:29.758 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT); work-dir=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/1a/53357d88ff4166933e2582c47d8d1f
+  error [nextflow.exception.ProcessFailedException]: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT)` terminated with an error exit status (1)
+Jul-27 22:08:29.758 [TaskFinalizer-5] INFO  nextflow.processor.TaskProcessor - [1a/53357d] NOTE: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT)` terminated with an error exit status (1) -- Execution is retried (1)
+Jul-27 22:08:29.763 [TaskFinalizer-3] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT); work-dir=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/90/ee7c9166721ae75212e2316355678b
+  error [nextflow.exception.ProcessFailedException]: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT)` terminated with an error exit status (1)
+Jul-27 22:08:29.763 [TaskFinalizer-3] INFO  nextflow.processor.TaskProcessor - [90/ee7c91] NOTE: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT)` terminated with an error exit status (1) -- Execution is retried (1)
+Jul-27 22:08:29.876 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL) > jobId: 8551252; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/2f/91e9c1d97e5f746785c44126225343
+Jul-27 22:08:29.877 [Task submitter] INFO  nextflow.Session - [2f/91e9c1] Re-submitted process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL)
+Jul-27 22:08:29.936 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL) > jobId: 8551253; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/c5/7953150350c141252647ad3a24e47e
+Jul-27 22:08:29.936 [Task submitter] INFO  nextflow.Session - [c5/795315] Re-submitted process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL)
+Jul-27 22:08:30.003 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT) > jobId: 8551254; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/6c/0a7d3ec6f4ee337872a7c5baec1910
+Jul-27 22:08:30.003 [Task submitter] INFO  nextflow.Session - [6c/0a7d3e] Re-submitted process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT)
+Jul-27 22:08:30.082 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT) > jobId: 8551255; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/dc/719e540335794edcd59a65f450cf9c
+Jul-27 22:08:30.083 [Task submitter] INFO  nextflow.Session - [dc/719e54] Re-submitted process > NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT)
+Jul-27 22:11:34.345 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8551252; id: 22; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL); status: COMPLETED; exit: 1; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/2f/91e9c1d97e5f746785c44126225343 started: 1753668684343; exited: 2025-07-28T02:11:33Z; ]
+Jul-27 22:11:34.347 [TaskFinalizer-6] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL); work-dir=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/2f/91e9c1d97e5f746785c44126225343
+  error [nextflow.exception.ProcessFailedException]: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL)` terminated with an error exit status (1)
+Jul-27 22:11:34.351 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8551253; id: 23; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL); status: COMPLETED; exit: 1; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/c5/7953150350c141252647ad3a24e47e started: 1753668684347; exited: 2025-07-28T02:11:33Z; ]
+Jul-27 22:11:34.357 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8551254; id: 24; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT); status: COMPLETED; exit: 1; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/6c/0a7d3ec6f4ee337872a7c5baec1910 started: 1753668684351; exited: 2025-07-28T02:11:33Z; ]
+Jul-27 22:11:34.366 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 8551255; id: 25; name: NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT); status: COMPLETED; exit: 1; error: -; workDir: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/dc/719e540335794edcd59a65f450cf9c started: 1753668684353; exited: 2025-07-28T02:11:33Z; ]
+Jul-27 22:11:34.430 [TaskFinalizer-6] ERROR nextflow.processor.TaskProcessor - Error executing process > 'NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL)'
+
+Caused by:
+  Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL)` terminated with an error exit status (1)
+
+
+Command executed [/home/hkates/.nextflow/assets/nf-core/scrnaseq/modules/nf-core/cellranger/multi/templates/cellranger_multi.py]:
+
+  #!/usr/bin/env python3
+  """
+  Automatically rename staged files for input into cellranger multi and run it.
+  
+  Copyright (c) Felipe Almeida 2024 - MIT License
+  """
+  
+  from subprocess import run
+  from pathlib import Path
+  from textwrap import dedent
+  import shlex
+  import re
+  
+  
+  def chunk_iter(seq, size):
+      """iterate over `seq` in chunks of `size`"""
+      return (seq[pos : pos + size] for pos in range(0, len(seq), size))
+  
+  
+  sample_id = "YL"
+  EMPTY_FILE = "EMPTY"
+  
+  # target directory in which the renamed fastqs will be placed
+  fastq_all = Path("./fastq_all")
+  fastq_all.mkdir(exist_ok=True)
+  
+  # Match R1 in the filename, but only if it is followed by a non-digit or non-character
+  # match "file_R1.fastq.gz", "file.R1_000.fastq.gz", etc. but
+  # do not match "SRR12345", "file_INFIXR12", etc
+  filename_pattern = r"([^a-zA-Z0-9])R1([^a-zA-Z0-9])"
+  
+  for modality in ["gex", "vdj", "ab", "beam", "cmo", "cirspr"]:
+      # get fastqs, ordered by path. Files are staged into
+      #   - "fastq_001/{original_name.fastq.gz}"
+      #   - "fastq_002/{original_name.fastq.gz}"
+      #   - ...
+      # Since we require fastq files in the input channel to be ordered such that a R1/R2 pair
+      # of files follows each other, ordering will get us a sequence of [R1, R2, R1, R2, ...]
+      fastqs = sorted(p for p in Path(".").glob(f"fastqs/{modality}/*/*") if p.name != EMPTY_FILE)
+      assert len(fastqs) % 2 == 0
+  
+      # target directory in which the renamed fastqs will be placed
+      final_dir = fastq_all / modality
+      final_dir.mkdir(exist_ok=True)
+  
+      for i, (r1, r2) in enumerate(chunk_iter(fastqs, 2), start=1):
+          # will we rename the files or just move it with the same name to
+          # the 'fastq_all' directory which is where files are expected?
+          if "false" == "true":  # nf variables are true/false, which are different from Python
+              resolved_name_r1 = r1.name
+              resolved_name_r2 = r2.name
+  
+          else:
+              # double escapes are required because nextflow processes this python 'template'
+              if re.sub(filename_pattern, r"\1R2\2", r1.name) != r2.name:
+                  raise AssertionError(
+                      dedent(
+                          f"""                        We expect R1 and R2 of the same sample to have the same filename except for R1/R2.
+                          This has been checked by replacing "R1" with "R2" in the first filename and comparing it to the second filename.
+                          If you believe this check shouldn't have failed on your filenames, please report an issue on GitHub!
+  
+                          Files involved:
+                              - {r1}
+                              - {r2}
+                          """
+                      )
+                  )
+  
+              resolved_name_r1 = f"{sample_id}_S1_L{i:03d}_R1_001.fastq.gz"
+              resolved_name_r2 = f"{sample_id}_S1_L{i:03d}_R2_001.fastq.gz"
+  
+          # rename or just move
+          r1.rename(final_dir / resolved_name_r1)
+          r2.rename(final_dir / resolved_name_r2)
+  
+  #
+  # fix relative paths from main.nf
+  #
+  work_dir = str(Path.cwd()) + "/"
+  gex_reference_path = "reference,./references/gex/gex_reference".replace("./", work_dir)
+  frna_probeset = "".replace("./", work_dir)
+  target_panel = "".replace("./", work_dir)
+  cmo_reference_path = "cmo-set,./references/cmo/cmo_reference.csv".replace("./", work_dir)
+  cmo_barcode_path = "".replace("./", work_dir)
+  fb_reference_path = "".replace("./", work_dir)
+  vdj_reference_path = "reference,./references/vdj/vdj_reference".replace("./", work_dir)
+  primer_index = "".replace("./", work_dir)
+  fastq_gex = "YL,./fastq_all/gex,,Gene Expression".replace("./", work_dir)
+  fastq_vdj = "YL,./fastq_all/vdj,,VDJ".replace("./", work_dir)
+  fastq_antibody = "".replace("./", work_dir)
+  fastq_beam = "".replace("./", work_dir)
+  fastq_crispr = "".replace("./", work_dir)
+  fastq_cmo = "YL,./fastq_all/cmo,,Multiplexing Capture".replace("./", work_dir)
+  
+  #
+  # generate config file for cellranger multi
+  #
+  config_txt = f"""[gene-expression]
+  {gex_reference_path}
+  {frna_probeset}
+  
+  
+  
+  
+  
+  
+  
+  create-bam,true
+  
+  {target_panel}
+  
+  
+  
+  {cmo_reference_path}
+  {cmo_barcode_path}
+  
+  
+  {fb_reference_path}
+  
+  
+  
+  [vdj]
+  {vdj_reference_path}
+  {primer_index}
+  
+  
+  
+  [libraries]
+  fastq_id,fastqs,lanes,feature_types
+  {fastq_gex}
+  {fastq_vdj}
+  {fastq_antibody}
+  {fastq_beam}
+  {fastq_crispr}
+  {fastq_cmo}
+  """
+  
+  #
+  # check the extra data that is included
+  #
+  if len("[samples]") > 0:
+      with open("references/cmo/barcodes/YL_cmo.csv", "r") as input_conf:
+          config_txt = config_txt + "\n[samples]\n" + input_conf.read() + "\n"
+  
+  if len("") > 0:
+      with open("", "r") as input_conf, open("", "r") as input_csv:
+          config_txt = config_txt + "\n\n" + input_conf.read() + "\n"
+          config_txt = config_txt + "[feature]\n" + input_csv.read() + "\n"
+  
+  if len("") > 0:
+      with open("", "r") as input_conf:
+          config_txt = config_txt + "\n\n" + input_conf.read() + "\n"
+  
+  # Remove blank lines from config text
+  config_txt = "\n".join([line for line in config_txt.split("\n") if line.strip() != ""])
+  
+  # Save config file
+  with open("cellranger_multi_config.csv", "w") as file:
+      file.write(config_txt)
+  
+  #
+  # run cellranger multi
+  #
+  run(
+      # fmt: off
+      [
+          "cellranger",
+          "multi",
+          f"--id={sample_id}",
+          "--csv=cellranger_multi_config.csv",
+          "--localcores=24",
+          "--localmem=144",
+          *shlex.split(""""""),
+      ],
+      # fmt: on
+      check=True,
+  )
+  
+  # Output version information
+  version = run(
+      ["cellranger", "-V"],
+      text=True,
+      check=True,
+      capture_output=True,
+  ).stdout.replace("cellranger cellranger-", "")
+  
+  # alas, no `pyyaml` pre-installed in the cellranger container
+  with open("versions.yml", "w") as f:
+      f.write('"NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI":\n')
+      f.write(f'  cellranger: "{version}"\n')
+
+Command exit status:
+  1
+
+Command output:
+  Martian Runtime - v4.0.12
+  Serving UI at http://c0607a-s3.ufhpc:32925?auth=A3WgTOgHJkLbia7QAqwwKR9r4SPX1DVichJCOgr8TRA
+  
+  Running preflight checks (please wait)...
+  
+  [error] Pipestance failed. Error log at:
+  YL/SC_MULTI_CS/MULTI_PREFLIGHT/fork0/chnk0-u006a86dc4e/_errors
+  
+  Log message:
+  [libraries] The combination of VDJ libraries and Multiplexing Capture libraries is not supported.
+  
+  Waiting 6 seconds for UI to do final refresh.
+  Pipestance failed. Use --noexit option to keep UI running after failure.
+  
+  2025-07-27 22:11:33 Shutting down.
+  Saving pipestance info to "YL/YL.mri.tgz"
+  For assistance, upload this file to 10x Genomics by running:
+  
+  cellranger upload <your_email> "YL/YL.mri.tgz"
+
+Command error:
+  INFO:    Environment variable SINGULARITYENV_TMPDIR is set, but APPTAINERENV_TMPDIR is preferred
+  INFO:    Environment variable SINGULARITYENV_NXF_TASK_WORKDIR is set, but APPTAINERENV_NXF_TASK_WORKDIR is preferred
+  INFO:    Environment variable SINGULARITYENV_NXF_DEBUG is set, but APPTAINERENV_NXF_DEBUG is preferred
+  
+  
+  Traceback (most recent call last):
+    File ".command.sh", line 164, in <module>
+      run(
+    File "/opt/conda/lib/python3.10/subprocess.py", line 526, in run
+      raise CalledProcessError(retcode, process.args,
+  subprocess.CalledProcessError: Command '['cellranger', 'multi', '--id=YL', '--csv=cellranger_multi_config.csv', '--localcores=24', '--localmem=144']' returned non-zero exit status 1.
+
+Work dir:
+  /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/2f/91e9c1d97e5f746785c44126225343
+
+Container:
+  /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/singularity/quay.io-nf-core-cellranger-8.0.0.img
+
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`
+Jul-27 22:11:34.434 [TaskFinalizer-9] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT); work-dir=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/dc/719e540335794edcd59a65f450cf9c
+  error [nextflow.exception.ProcessFailedException]: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AT)` terminated with an error exit status (1)
+Jul-27 22:11:34.435 [TaskFinalizer-8] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT); work-dir=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/6c/0a7d3ec6f4ee337872a7c5baec1910
+  error [nextflow.exception.ProcessFailedException]: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YT)` terminated with an error exit status (1)
+Jul-27 22:11:34.437 [TaskFinalizer-7] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL); work-dir=/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/c5/7953150350c141252647ad3a24e47e
+  error [nextflow.exception.ProcessFailedException]: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (AL)` terminated with an error exit status (1)
+Jul-27 22:11:34.486 [TaskFinalizer-6] DEBUG nextflow.Session - Session aborted -- Cause: Process `NFCORE_SCRNASEQ:SCRNASEQ:CELLRANGER_MULTI_ALIGN:CELLRANGER_MULTI (YL)` terminated with an error exit status (1)
+Jul-27 22:11:34.528 [TaskFinalizer-6] DEBUG nextflow.Session - The following nodes are still active:
+[process] NFCORE_SCRNASEQ:SCRNASEQ:MULTIQC
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: multiqc_files
+  port 1: (value) bound ; channel: multiqc_config
+  port 2: (value) bound ; channel: extra_multiqc_config
+  port 3: (value) bound ; channel: multiqc_logo
+  port 4: (value) bound ; channel: replace_names
+  port 5: (value) bound ; channel: sample_names
+  port 6: (cntrl) -     ; channel: $
+
+Jul-27 22:11:34.551 [TaskFinalizer-6] ERROR nextflow.Nextflow - Pipeline failed. Please refer to troubleshooting docs: https://nf-co.re/docs/usage/troubleshooting
+Jul-27 22:11:34.553 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
+Jul-27 22:11:34.553 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jul-27 22:11:34.553 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-27 22:11:34.586 [Actor Thread 37] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 5; slices: 1; internal sort time: 0.018 s; external sort time: 0.001 s; total time: 0.019 s
+Jul-27 22:11:34.587 [main] INFO  nextflow.Nextflow - -[0;35m[nf-core/scrnaseq][0;31m Pipeline completed with errors[0m-
+Jul-27 22:11:34.593 [Actor Thread 37] DEBUG nextflow.file.FileCollector - >> temp file exists? false
+Jul-27 22:11:34.593 [Actor Thread 37] DEBUG nextflow.file.FileCollector - Missed collect-file cache -- cause: java.nio.file.NoSuchFileException: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/collect-file/2d593312c517e7cde637e369cc087f7a
+Jul-27 22:11:34.600 [main] WARN  n.processor.TaskPollingMonitor - Killing running tasks (4)
+Jul-27 22:11:34.611 [Actor Thread 37] DEBUG nextflow.file.FileCollector - Saved collect-files list to: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/nf-core_pipeline/work/collect-file/2d593312c517e7cde637e369cc087f7a
+Jul-27 22:11:34.613 [Actor Thread 37] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /scratch/local/8547654/nxf-1301093238933629588
+Jul-27 22:11:34.668 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=11; failedCount=8; ignoredCount=0; cachedCount=2; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=4; abortedCount=4; succeedDuration=12h 40m 40s; failedDuration=24m 5s; cachedDuration=22s;loadCpus=0; loadMemory=0; peakRunning=12; peakCpus=120; peakMemory=720 GB; ]
+Jul-27 22:11:34.668 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Jul-27 22:11:34.670 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Jul-27 22:11:35.764 [main] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
+Jul-27 22:11:36.056 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jul-27 22:11:36.087 [main] INFO  org.pf4j.AbstractPluginManager - Stop plugin 'nf-schema@2.3.0'
+Jul-27 22:11:36.087 [main] DEBUG nextflow.plugin.BasePlugin - Plugin stopped nf-schema
+Jul-27 22:11:36.089 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
