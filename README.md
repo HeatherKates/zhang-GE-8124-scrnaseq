@@ -55,7 +55,7 @@ This repository contains the analysis pipeline for Dr. Weizhou Zhang's study exa
 **Example run:**
 ```bash
 cd 01_preprocessing/02_cellranger/AL_run/
-sbatch cellranger_AL.sbatch
+sbatch cellranger_AL.sbatch```
 
 ### 2. R Analysis Pipeline (`02_R/`)
 
@@ -100,7 +100,7 @@ Rscript 07_prepare_report.R
 rmarkdown::render("08_report.Rmd")
 
 # Create Loupe files
-source("09_loupe.R")
+source("09_loupe.R")```
 
 ## Results and Outputs
 
