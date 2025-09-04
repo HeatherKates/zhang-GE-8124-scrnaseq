@@ -1,0 +1,7 @@
+Running FastQC for AT:
+  R1: /orange/zhangw/GE8124/GE-8124-WZhang_delivery20250611/GE-8124-VDJ-WZhang-25B-22WFV7LT4-Lane4/GE-8124-VDJ-WZhang-25B-22WFV7LT4-Lane4/GE-8124_15_BCR_AT_SI-TT-B7_i5_L004/BCR-AT_S7_L004_R1_001.fastq.gz
+  R2: /orange/zhangw/GE8124/GE-8124-WZhang_delivery20250611/GE-8124-VDJ-WZhang-25B-22WFV7LT4-Lane4/GE-8124-VDJ-WZhang-25B-22WFV7LT4-Lane4/GE-8124_15_BCR_AT_SI-TT-B7_i5_L004/BCR-AT_S7_L004_R2_001.fastq.gz
+application/gzip
+application/gzip
+Analysis complete for BCR-AT_S7_L004_R1_001.fastq.gz
+Analysis complete for BCR-AT_S7_L004_R2_001.fastq.gz

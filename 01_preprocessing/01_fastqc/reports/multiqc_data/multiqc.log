@@ -1,0 +1,3 @@
+[2025-08-01 21:49:06,505] multiqc.core.version_check                         [WARNING]  MultiQC Version v1.30 now available!
+[2025-08-01 21:49:06,506] multiqc.core.file_search                           [INFO   ]  Search path: /blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/processing/01_fastqc/reports
+[2025-08-01 21:49:09,285] multiqc.modules.fastqc.fastqc                      [INFO   ]  Found 84 reports

@@ -1,0 +1,226 @@
+---
+title: "`r params$title`"
+author: "BCB-SR"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: hide
+    theme: flatly
+params:
+  dataset: "YT"
+  title: "PROTAC scRNA-seq Analysis: Young Tumor (YT) - Preliminary Results"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, fig.width = 10, fig.height = 8)
+
+library(Seurat)
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(knitr)
+library(DT)
+library(patchwork)
+library(stringr)
+
+# Set parameters
+DATASET <- params$dataset
+WEB_URL <- paste0("https://data.rc.ufl.edu/pub/cancercenter-dept/BCB-SR/Zhangw/TEMI/GE-8124/", DATASET)
+ANALYSIS_DIR <- paste0("/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/",DATASET, "_analysis")
+OUTPUT_DIR <- file.path(ANALYSIS_DIR, "analysis_outputs")
+
+# Load data for dynamic reporting
+obj <- readRDS(file.path(OUTPUT_DIR, "objects", "06_final_analysis.rds"))
+sample_metadata <- readRDS(file.path(OUTPUT_DIR, "objects", "01_sample_metadata.rds"))
+cluster_markers <- read_csv(file.path(OUTPUT_DIR, "tables", "05_cluster_markers.csv"), show_col_types = FALSE)
+vdj_summary <- read_csv(file.path(OUTPUT_DIR, "tables", "03_vdj_summary.csv"), show_col_types = FALSE)
+qc_summary <- read_csv(file.path(OUTPUT_DIR, "tables", "02_qc_summary_before.csv"), show_col_types = FALSE)
+
+# Calculate dynamic values
+n_cells <- ncol(obj)
+n_clusters <- length(unique(obj$seurat_clusters))
+n_samples <- nrow(sample_metadata)
+tissue_type <- case_when(
+  str_detect(DATASET, "L") ~ "Lymph Node",
+  str_detect(DATASET, "T") ~ "Tumor"
+)
+age_group <- case_when(
+  str_detect(DATASET, "A") ~ "Aged",
+  str_detect(DATASET, "Y") ~ "Young"
+)
+```
+
+# Executive Summary
+
+This report presents preliminary analysis of single-cell RNA-sequencing data from **`r age_group` `r tissue_type`** samples comparing PZ15227 treatment to vehicle control.
+
+**Key Findings:**
+- Successfully processed `r n_samples` samples with `r format(n_cells, big.mark = ",")` high-quality cells
+- Identified `r n_clusters` immune cell clusters with clear B cell and T cell populations
+- VDJ analysis detected BCR in `r sum(obj$has_bcr)` cells (`r round(100*sum(obj$has_bcr)/n_cells, 1)`%) and TCR in `r sum(obj$has_tcr)` cells (`r round(100*sum(obj$has_tcr)/n_cells, 1)`%)
+- Treatment effects detected across multiple cell populations
+
+# Methods
+
+## Sample Processing
+
+**Cell Ranger Analysis:** Samples were processed using Cell Ranger v7.x with hashtag antibody-based sample multiplexing. Raw sequencing data was aligned to the mouse reference genome (mm10) and filtered for high-quality cells.
+
+**Quality Control:** Cells were filtered based on:
+- Minimum 200 detected genes per cell
+- Minimum 3 cells per gene
+- Low mitochondrial gene percentage
+
+## Single-cell RNA-seq Analysis
+
+**Normalization:** Gene expression was normalized using LogNormalize method (scale factor: 10,000) as implemented in Seurat v5.
+
+**Dimensionality Reduction:** Principal component analysis was performed on the top 2,000 highly variable genes. UMAP embedding was calculated using the first 20-25 principal components.
+
+**Clustering:** Graph-based clustering was performed using the Leiden algorithm with resolution 0.5, implemented via Seurat's FindClusters function.
+
+**VDJ Integration:** BCR and TCR data from 10x VDJ-seq was integrated with gene expression data. Only high-confidence, productive contigs were retained for analysis.
+
+**Differential Expression:** DE analysis was performed to compare PZ15227 to Vehicle within each cluster and overall using MAST as implemented in Seurat v5 FindMarkers function. MAST was selected to account for cellular detection rate and sample-level effects through the latent.vars parameter.
+
+# Results
+
+## Data Quality Assessment
+
+```{r qc-summary}
+# Display QC metrics
+qc_table <- qc_summary %>%
+  mutate(
+    median_genes = format(median_genes, big.mark = ","),
+    median_umis = format(median_umis, big.mark = ","),
+    median_mt = paste0(round(median_mt, 2), "%"),
+    median_ribo = paste0(round(median_ribo, 2), "%")
+  )
+
+kable(qc_table, caption = "Quality Control Metrics by Sample") %>%
+  kableExtra::kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+**Cell Ranger Web Summaries:**
+
+```{r web-summaries, results='asis'}
+sample_ids <- sample_metadata$sample_id
+for(sample_id in sample_ids) {
+  cat(paste0("- [", sample_id, " Cell Ranger Report](", WEB_URL, "/web_summaries/", sample_id, "_web_summary.html)\n"))
+}
+```
+
+**QC Plots:** [Download QC plots](`r WEB_URL`/plots/)
+
+## Clustering and Cell Type Identification
+
+```{r clustering-overview, fig.height=6}
+# Load and display UMAP
+DimPlot(obj, group.by = "seurat_clusters", label = TRUE, label.size = 3) + 
+  ggtitle(paste("Cell Clustering -", n_clusters, "clusters identified")) +
+  theme(plot.title = element_text(size = 14, hjust = 0.5))
+```
+
+```{r cluster-composition}
+# Cluster size table
+cluster_sizes <- table(obj$seurat_clusters)
+cluster_df <- data.frame(
+  Cluster = names(cluster_sizes),
+  Cells = as.numeric(cluster_sizes),
+  Percentage = round(100 * as.numeric(cluster_sizes) / n_cells, 1)
+)
+
+kable(cluster_df, caption = "Cluster Composition") %>%
+  kableExtra::kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+**Cell Type Marker Plots:** [Download marker expression plots](`r WEB_URL`/plots/)
+
+## VDJ Analysis Results
+
+```{r vdj-summary}
+kable(vdj_summary, caption = "VDJ Detection Summary by Sample") %>%
+  kableExtra::kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+## Treatment Effects
+
+```{r treatment-overview, fig.height=6}
+# Treatment distribution
+DimPlot(obj, group.by = "treatment", cols = c("PZ15227" = "red", "Vehicle" = "blue")) + 
+  ggtitle("Treatment Distribution Across Clusters")
+```
+
+```{r treatment-composition}
+# Treatment composition by cluster
+treatment_table <- table(obj$seurat_clusters, obj$treatment)
+treatment_df <- as.data.frame.matrix(treatment_table)
+treatment_df$Cluster <- rownames(treatment_df)
+treatment_df$Total <- treatment_df$PZ15227 + treatment_df$Vehicle
+treatment_df$PZ15227_pct <- round(100 * treatment_df$PZ15227 / treatment_df$Total, 1)
+treatment_df$Vehicle_pct <- round(100 * treatment_df$Vehicle / treatment_df$Total, 1)
+
+kable(treatment_df[,c("Cluster", "PZ15227", "Vehicle", "PZ15227_pct", "Vehicle_pct")], 
+      col.names = c("Cluster", "PZ15227", "Vehicle", "PZ15227 %", "Vehicle %"),
+      caption = "Treatment Distribution by Cluster") %>%
+  kableExtra::kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+### Differential Expression Results
+
+**Overall Treatment Effects:**
+
+```{r overall-de}
+overall_de <- read_csv(file.path(OUTPUT_DIR, "tables", "06_treatment_de_MAST.csv"), show_col_types = FALSE)
+sig_genes <- sum(overall_de$p_val_adj < 0.05, na.rm = TRUE)
+```
+
+- Total genes tested: `r nrow(overall_de)`
+- Significantly differential genes (padj < 0.05): `r sig_genes`
+- [Download overall DE results](`r WEB_URL`/tables/06_treatment_de_MAST.csv)
+
+**Per-Cluster Differential Expression:**
+
+```{r cluster-de-summary}
+# Count DE genes per cluster
+de_files <- list.files(file.path(OUTPUT_DIR, "tables"), pattern = "06_treatment_de_cluster.*_MAST.csv", full.names = TRUE)
+de_summary <- data.frame()
+
+for(file in de_files) {
+  cluster_id <- str_extract(basename(file), "cluster_([0-9]+)") %>% str_remove("cluster_")
+  de_data <- read_csv(file, show_col_types = FALSE)
+  n_sig <- sum(de_data$p_val_adj < 0.05, na.rm = TRUE)
+  n_total <- nrow(de_data)
+  
+  de_summary <- rbind(de_summary, data.frame(
+    Cluster = cluster_id,
+    Total_Genes = n_total,
+    Significant_Genes = n_sig,
+    Download_Link = paste0("[Download](", WEB_URL, "/tables/", basename(file), ")")
+  ))
+}
+
+de_summary <- de_summary[order(as.numeric(de_summary$Cluster)),]
+kable(de_summary, caption = "Differential Expression Summary by Cluster", escape = FALSE) %>%
+  kableExtra::kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+# Downloads
+
+## Analysis Objects
+- [Final Seurat Object](`r WEB_URL`/objects/06_final_analysis.rds)
+- [Cluster Markers](`r WEB_URL`/tables/05_cluster_markers.csv)
+- [Sample Metadata](`r WEB_URL`/objects/01_sample_metadata.rds)
+
+## All Results
+- [Plots Directory](`r WEB_URL`/plots/)
+- [Tables Directory](`r WEB_URL`/tables/)
+- [Cell Ranger Reports](`r WEB_URL`/web_summaries/)
+
+# Session Information
+
+```{r session-info}
+sessionInfo()
+```

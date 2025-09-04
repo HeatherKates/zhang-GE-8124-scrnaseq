@@ -1,0 +1,6 @@
+error: unexpected argument ' ' found
+
+Usage: cellranger multi [OPTIONS] --id <ID> --csv <CSV>
+
+For more information, try '--help'.
+/var/spool/slurmd/job10618517/slurm_script: line 19: --localmem=14: command not found

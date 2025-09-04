@@ -1,0 +1,7 @@
+Running FastQC for YT:
+  R1: /orange/zhangw/GE8124/GE-8124-WZhang_delivery20250611/GE-8124-VDJ-WZhang-25B-22WFV7LT4-Lane3/GE-8124-VDJ-WZhang-25B-22WFV7LT4-Lane3/GE-8124_9_TCR_YT_SI-TT-B1_i5_L003/TCR-YT_S1_L003_R1_001.fastq.gz
+  R2: /orange/zhangw/GE8124/GE-8124-WZhang_delivery20250611/GE-8124-VDJ-WZhang-25B-22WFV7LT4-Lane3/GE-8124-VDJ-WZhang-25B-22WFV7LT4-Lane3/GE-8124_9_TCR_YT_SI-TT-B1_i5_L003/TCR-YT_S1_L003_R2_001.fastq.gz
+application/gzip
+application/gzip
+Analysis complete for TCR-YT_S1_L003_R2_001.fastq.gz
+Analysis complete for TCR-YT_S1_L003_R1_001.fastq.gz

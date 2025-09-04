@@ -1,0 +1,6 @@
+Started analysis of GE-YL_S2_L005_R1_001.fastq.gz
+Started analysis of GE-YL_S2_L005_R2_001.fastq.gz
+Approx 5% complete for GE-YL_S2_L005_R1_001.fastq.gz
+Approx 5% complete for GE-YL_S2_L005_R2_001.fastq.gz
+Approx 10% complete for GE-YL_S2_L005_R1_001.fastq.gz
+slurmstepd: error: *** JOB 8607134 ON c0606a-s24 CANCELLED AT 2025-07-28T11:48:33 DUE TO TIME LIMIT ***

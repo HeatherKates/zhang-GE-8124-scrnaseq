@@ -1,0 +1,36 @@
+---
+title: "PROTAC scRNA-seq Analysis - Progress Update"
+format: 
+  revealjs:
+    theme: simple
+    slide-number: true
+---
+
+## Project Status: Processing and preliminary analysis 95% complete
+
+**Completed Analyses (3/4):**
+
+-   **AL (Aged Lymph Node)** - Complete, excellent QC
+-   **YT (Young Tumor)** - Complete, excellent QC, one sample failed (n=2 Vehicle)
+-   **AT (Aged Tumor)** - Complete, excellent QC\
+-   **YL (Young Lymph Node)** - Pending
+
+## Data Quality Highlights
+
+-   Exceptional mitochondrial percentages (2-4% across all samples)
+-   Strong VDJ integration (50-70% BCR+, 30-50% TCR+)
+-   Clear treatment effects detected across multiple cell populations
+-   No batch effects - excellent sample integration
+
+## Key Findings So Far
+
+-   Germinal center B cells depleted by treatment in aged lymph node tissue
+-   Broad immune effects (most populations expand with treatment)
+-   Consistent patterns emerging across age/tissue conditions
+
+## Next Steps
+
+-   Complete YL (Young Lymph Node) processing
+-   Share individual reports for Temi/Zhang review (visit [Project Tracking](https://bcb-sr.rc.ufl.edu/projecttracking/) login: Zhangw pw: pass3 and download Reports)
+-   Annotate cells based on cell type marker plots in report or other
+-   Plan integrated comparative analysis based on feedback

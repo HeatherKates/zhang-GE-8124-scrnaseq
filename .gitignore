@@ -1,6 +1,28 @@
-processing/01_fastqc/reports/
-processing/01_fastqc/logs/
-processing/02_cellranger/logs/
-processing/02_cellranger/mouse_hashing_run
-processing/02_cellranger/__mouse_hashing_run.mro
-processing/02_cellranger/refs
+# Large reference data
+01_preprocessing/02_cellranger/refs/refdata-*/
+
+# Logs
+./01_preprocessing/01_fastqc/logs
+./01_preprocessing/02_cellranger/AT_run/logs
+./01_preprocessing/02_cellranger/AL_run/logs
+./01_preprocessing/02_cellranger/YL_run/logs
+./01_preprocessing/02_cellranger/logs
+./01_preprocessing/02_cellranger/YT_run/logs
+
+# Reports
+./01_preprocessing/01_fastqc/reports
+
+# R analysis outputs
+02_R/AL_analysis/analysis_outputs/
+02_R/AT_analysis/analysis_outputs/
+02_R/YL_analysis/analysis_outputs/
+02_R/YT_analysis/analysis_outputs/
+
+# Cellranger outputs
+**/AL_run/AL_hashing/
+**/AT_run/AT_hashing/
+**/YL_run/YL_hashingpri/
+**/YT_run/YT_hashing/
+
+# Quarto output
+**/Update08222025_files/libs/

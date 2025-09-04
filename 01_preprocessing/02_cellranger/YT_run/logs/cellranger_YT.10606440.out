@@ -1,0 +1,20 @@
+Martian Runtime - v4.0.13
+Serving UI at http://c0703a-s30.ufhpc:41369?auth=z3NiXb01ECiUgnXeiaHEyatzWKmMy5r_0tZUQ6q_PF4
+
+Running preflight checks (please wait)...
+
+[error] Pipestance failed. Error log at:
+YT_hashing/SC_MULTI_CS/MULTI_PREFLIGHT/fork0/chnk0-u13f8a7dc0a/_errors
+
+Log message:
+Sample with sample_id = 'YT_Vehicle_1' in gem_well = '1' was declared as a multiplexed sample, but no 'Multiplexing Capture' library was provided for that gem_well in the [libraries] section
+
+Waiting 6 seconds for UI to do final refresh.
+Pipestance failed. Use --noexit option to keep UI running after failure.
+
+2025-08-21 22:55:13 Shutting down.
+Saving pipestance info to "YT_hashing/YT_hashing.mri.tgz"
+For assistance, upload this file to 10x Genomics by running:
+
+cellranger upload <your_email> "YT_hashing/YT_hashing.mri.tgz"
+
