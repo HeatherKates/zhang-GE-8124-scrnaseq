@@ -22,18 +22,18 @@ This repository contains the analysis pipeline for Dr. Weizhou Zhang's study exa
 
 ## Repository Structure
 
-├── 01_preprocessing/          # Data preprocessing pipeline
-│   ├── 01_fastqc/            # Quality control of raw reads
-│   └── 02_cellranger/        # Cell Ranger Multi processing
-│       ├── *_run/            # Group-specific runs (AL, AT, YL, YT)
-│       ├── refs/             # Reference genomes and feature files
-│       └── symlinks/         # Symlinked FASTQ files
-├── 02_R/                     # R analysis pipeline
-│   ├── AL_analysis/          # Aged lymph node analysis
-│   ├── AT_analysis/          # Aged tumor analysis  
-│   ├── YL_analysis/          # Young lymph node analysis
-│   └── YT_analysis/          # Young tumor analysis
-└── 03_reports/               # Summary reports and presentations
+├── 01_preprocessing/ # Data preprocessing pipeline
+│ ├── 01_fastqc/ # Quality control of raw reads
+│ └── 02_cellranger/ # Cell Ranger Multi processing
+│ ├── *_run/ # Group-specific runs (AL, AT, YL, YT)
+│ ├── refs/ # Reference genomes and feature files
+│ └── symlinks/ # Symlinked FASTQ files
+├── 02_R/ # R analysis pipeline
+│ ├── AL_analysis/ # Aged lymph node analysis
+│ ├── AT_analysis/ # Aged tumor analysis
+│ ├── YL_analysis/ # Young lymph node analysis
+│ └── YT_analysis/ # Young tumor analysis
+└── 03_reports/ # Summary reports and presentations
 
 ## Analysis Pipeline
 
