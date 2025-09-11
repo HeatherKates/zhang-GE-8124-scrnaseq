@@ -1,5 +1,5 @@
 # =============================================================================
-# PROTAC scRNA-seq Analysis: Data Loading and Initial Setup (AL Group)
+# PROTAC scRNA-seq Analysis: Data Loading and Initial Setup (YL Group)
 # =============================================================================
 
 library(Seurat)
@@ -8,10 +8,10 @@ library(readr)
 library(stringr)
 
 # Configuration
-DATASET <- "AL"  # "YT","AT","YL"
+DATASET <- "YL"  # "YT","AT","YL"
 BASE_PATH <- paste0("/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/processing/02_cellranger/", DATASET, "_run/", DATASET, "_hashing/outs")
 samples <- paste0(DATASET, c("_Vehicle_1", "_Vehicle_2", "_Vehicle_3", "_PZ15227_1", "_PZ15227_2", "_PZ15227_3"))
-age = "Aged" # "Young"
+age = "Young" # "Young"
 tissue = "Lymph node" # "Tumor"
 
 #BASE_PATH <- "/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/processing/02_cellranger/AL_run/AL_hashing/outs"
@@ -24,7 +24,7 @@ dir.create(file.path(OUTPUT_DIR, "plots"), recursive = TRUE, showWarnings = FALS
 dir.create(file.path(OUTPUT_DIR, "tables"), recursive = TRUE, showWarnings = FALSE)
 dir.create(file.path(OUTPUT_DIR, "objects"), recursive = TRUE, showWarnings = FALSE)
 
-message("=== PROTAC scRNA-seq Analysis: AL Group (Aged Lymph Node) ===")
+message("=== PROTAC scRNA-seq Analysis: YL Group (Young Lymph Node) ===")
 message("Loading Cell Ranger Multi outputs...")
 
 # Sample information
