@@ -1,5 +1,6 @@
 # Large reference data
 01_preprocessing/02_cellranger/refs/refdata-*/
+01_preprocessing/02_cellranger/copy_vdj_files.bash
 
 # Logs
 ./01_preprocessing/01_fastqc/logs
