@@ -22,7 +22,7 @@
 # Cellranger outputs
 **/AL_run/AL_hashing/
 **/AT_run/AT_hashing/
-**/YL_run/YL_hashingpri/
+**/YL_run/YL_hashing/
 **/YT_run/YT_hashing/
 
 # Quarto output
