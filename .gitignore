@@ -17,6 +17,7 @@
 02_R/AT_analysis/analysis_outputs/
 02_R/YL_analysis/analysis_outputs/
 02_R/YT_analysis/analysis_outputs/
+02_R/integrated_analysis/analysis_outputs/
 
 # Cellranger outputs
 **/AL_run/AL_hashing/
