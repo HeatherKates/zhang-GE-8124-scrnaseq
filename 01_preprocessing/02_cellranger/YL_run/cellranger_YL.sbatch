@@ -4,9 +4,9 @@
 #SBATCH --error=logs/cellranger_YL.%j.err
 #SBATCH --qos=cancercenter-dept-b
 #SBATCH --account=cancercenter-dept
-#SBATCH --mem=512G
+#SBATCH --mem=500G
 #SBATCH --cpus-per-task=64
-#SBATCH --time=36:00:00
+#SBATCH --time=24:00:00
 
 cd ${SLURM_SUBMIT_DIR}
 module load cellranger/9.0.0

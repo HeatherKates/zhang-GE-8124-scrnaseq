@@ -1,19 +1,19 @@
 [gene-expression]
-reference,/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/processing/02_cellranger/refs/refdata-gex-GRCm39-2024-A
+reference,/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/01_preprocessing/02_cellranger/refs/refdata-gex-GRCm39-2024-A
 create-bam,false
 
 [vdj]
-reference,/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/processing/02_cellranger/refs/refdata-cellranger-vdj-GRCm38-alts-ensembl-7.0.0
+reference,/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/01_preprocessing/02_cellranger/refs/refdata-cellranger-vdj-GRCm38-alts-ensembl-7.0.0
 
 [feature]
-reference,/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/processing/02_cellranger/refs/feature_ref.csv
+reference,/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/01_preprocessing/02_cellranger/refs/feature_ref.csv
 
 [libraries]
 fastq_id,fastqs,feature_types,physical_library_id
-BCR-YL,/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/processing/02_cellranger/symlinks/vdjb_fastqs,VDJ-B,BCR
-TCR-YL,/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/processing/02_cellranger/symlinks/vdjt_fastqs,VDJ-T,TCR
-CSP-YL,/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/processing/02_cellranger/symlinks/ab_fastqs,Antibody Capture,CSP
-GE-YL,/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/processing/02_cellranger/symlinks/gex_fastqs,Gene Expression,GE
+BCR-YL,/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/01_preprocessing/02_cellranger/symlinks/vdjb_fastqs,VDJ-B,BCR
+TCR-YL,/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/01_preprocessing/02_cellranger/symlinks/vdjt_fastqs,VDJ-T,TCR
+CSP-YL,/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/01_preprocessing/02_cellranger/symlinks/ab_fastqs,Antibody Capture,CSP
+GE-YL,/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/01_preprocessing/02_cellranger/symlinks/gex_fastqs,Gene Expression,GE
 
 [samples]
 sample_id,hashtag_ids
