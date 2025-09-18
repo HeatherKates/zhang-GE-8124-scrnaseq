@@ -9,12 +9,12 @@ library(stringr)
 
 # Configuration
 DATASET <- "YL"  # "YT","AT","YL"
-BASE_PATH <- paste0("/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/processing/02_cellranger/", DATASET, "_run/", DATASET, "_hashing/outs")
+BASE_PATH <- paste0("/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/01_preprocessing/02_cellranger/", DATASET, "_run/", DATASET, "_hashing/outs")
 samples <- paste0(DATASET, c("_Vehicle_1", "_Vehicle_2", "_Vehicle_3", "_PZ15227_1", "_PZ15227_2", "_PZ15227_3"))
 age = "Young" # "Young"
 tissue = "Lymph node" # "Tumor"
 
-#BASE_PATH <- "/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/processing/02_cellranger/AL_run/AL_hashing/outs"
+#BASE_PATH <- "/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/01_preprocessing/02_cellranger/AL_run/AL_hashing/outs"
 OUTPUT_DIR <- "../analysis_outputs"
 WEB_DIR <- paste0("/orange/cancercenter-dept/web/public/BCB-SR/Zhangw/TEMI/GE-8124/",DATASET)
 

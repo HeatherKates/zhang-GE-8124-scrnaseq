@@ -8,7 +8,7 @@ library(dplyr)
 
 # Set parameters
 DATASET <- "YL"  # Change for each analysis
-ANALYSIS_DIR <- paste0("/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/",DATASET, "_analysis")
+ANALYSIS_DIR <- paste0("/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/02_R/",DATASET, "_analysis")
 OUTPUT_DIR <- file.path(ANALYSIS_DIR, "analysis_outputs")
 WEB_DIR <- paste0("/orange/cancercenter-dept/web/public/BCB-SR/Zhangw/TEMI/GE-8124/", DATASET)
 
