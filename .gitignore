@@ -28,3 +28,12 @@
 
 # Quarto output
 **/Update08222025_files/libs/
+
+# html reports
+*html
+
+# logs
+**/logs
+
+# cloupe files
+*cloupe

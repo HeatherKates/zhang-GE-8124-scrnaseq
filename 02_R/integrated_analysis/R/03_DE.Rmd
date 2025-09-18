@@ -1,7 +1,7 @@
 ---
-title: "Effect of PROTAC treatment on the immune landscape in young and old mice."
+title: "Effect of PROTAC treatment on the immune landscape in young and old mice"
 subtitle: "B Cell Subset Analysis and Differential Expression"
-output: 
+output:
   html_document:
     toc: true
     keep_md: false
@@ -10,8 +10,8 @@ output:
     theme: default
     highlight: tango
     code_folding: none
-pandoc_args: 
-  - "+RTS" 
+pandoc_args:
+  - "+RTS"
   - "-K16000m"
   - "-RTS"
 date: "`r format(Sys.time(), '%m/%d/%y')`"
@@ -29,24 +29,13 @@ library(stringr)
 library(tibble)
 library(DESeq2)
 library(harmony)
+library(loupeR)
 
-# Set seed for reproducibility
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, fig.align="center")
 set.seed(42)
 ```
 
-# Project Summary and Data
-
-## Analysis by:
-
-**PI**: Dr. Wiezhou Zhang[emailto:zhangw@ufl.edu]
-
-**Analysis*: Dr. Heather Kates[emailto:hkates@ufl.edu]
-
-## Data
-
-The data used in this analysis are the result of [describe pipeline]. All intermediate data objects and a link to the Github Repository with reproducible code to produce these from raw data can be found at https://data.rc.ufl.edu/secure/cancercenter-dept/zhangw/GE-8124/. Contact hkates@ufl.edu or zhangw@ufl.edu for login credentials.
-
-```{r load data}
+```{r load_data, echo=FALSE, message=FALSE, warning=FALSE}
 # Set parameters
 DATASET <- "INTEGRATED"
 BASE_PATH <- "/blue/zhangw/BCBSR_BIOINFORMATICS/hkates/TEMI/GE-8124_scrnaseq/02_R/"
@@ -55,23 +44,15 @@ OUTPUT_DIR <- file.path(ANALYSIS_DIR, "analysis_outputs")
 WEB_DIR = "/orange/cancercenter-dept/web/secure/zhangw/GE-8124/integrated"
 
 # Load integrated Seurat object
-message("Loading integrated Seurat object...")
 obj <- readRDS(file.path(OUTPUT_DIR, "objects", "integrated_with_vdj.rds"))
-
-# Verify what assays and reductions are available
-message("Available assays: ", paste(names(obj@assays), collapse = ", "))
-message("Available reductions: ", paste(names(obj@reductions), collapse = ", "))
 
 # Set default assay to RNA
 DefaultAssay(obj) <- "RNA"
 
-# FIX 1: Join layers in Seurat v5 (this fixes the warning and potential issues)
-message("Joining layers in RNA assay...")
+# Join layers in Seurat v5 for compatibility
 obj[["RNA"]] <- JoinLayers(obj[["RNA"]])
 
-# Prepare metadata for Loupe Browser
-message("Preparing metadata...")
-# Convert factor columns to character (Loupe Browser requirement)
+# Convert factor columns to character
 metadata_cols <- colnames(obj@meta.data)
 for(col in metadata_cols) {
   if(is.factor(obj@meta.data[[col]])) {
@@ -79,7 +60,7 @@ for(col in metadata_cols) {
   }
 }
 
-# Create enhanced categorical metadata for filtering
+# Create enhanced categorical metadata
 obj$cluster_annotation <- paste0("Cluster_", obj$seurat_clusters)
 obj$bcr_status <- ifelse(obj$has_bcr %in% TRUE, "BCR_positive", "BCR_negative")
 obj$tcr_status <- ifelse(obj$has_tcr %in% TRUE, "TCR_positive", "TCR_negative")
@@ -89,7 +70,7 @@ obj$immune_type <- case_when(
   TRUE ~ "Other"
 )
 
-# Create analysis group labels for better visualization
+# Create analysis group labels
 obj$analysis_group_clean <- case_when(
   obj$analysis_group == "AL_analysis" ~ "Aged_Lymph_node",
   obj$analysis_group == "AT_analysis" ~ "Aged_Tumor",
@@ -98,255 +79,343 @@ obj$analysis_group_clean <- case_when(
   TRUE ~ obj$analysis_group
 )
 obj$group_treatment <- paste(obj$analysis_group_clean, obj$treatment, sep = "_")
+
 # Standardize tissue labels
 obj$tissue <- case_when(
-  obj$tissue == "Lymph" ~ "Lymph node",
-  TRUE ~ obj$tissue  
+  grepl("^Lymph$", trimws(obj$tissue), ignore.case = TRUE) ~ "Lymph node",
+  grepl("^Lymph node$", trimws(obj$tissue), ignore.case = TRUE) ~ "Lymph node",
+  grepl("^Tumor$", trimws(obj$tissue), ignore.case = TRUE) ~ "Tumor",
+  TRUE ~ as.character(obj$tissue)
 )
 ```
 
-## Subset B Cell Population
+# Study Overview
 
-This chunk subsets the B cell population from the main Seurat object based on BCR status from the VDJ assay.
+**Principal Investigator**: Dr. Wiezhou Zhang ([zhangw@ufl.edu](mailto:zhangw@ufl.edu))  
+**Bioinformatics Analysis**: Dr. Heather Kates ([hkates@ufl.edu](mailto:hkates@ufl.edu))
 
-```{r subset_bcells, echo=FALSE}
-# Check what values are in bcr_status
-cat("BCR status values:\n")
-print(table(obj$bcr_status, useNA = "always"))
+## Experimental Design
 
-# Subset B cells based on BCR status - adjust the filtering condition based on your bcr_status values
-# Common values might be "productive", "TRUE", "complete", etc.
+This analysis examines changes in B cell population composition and gene expression related to PROTAC treatment (PZ15227) and to age comparing young and aged mice lymph node and tumor tissues.
+
+**Sample Groups:**
+
+- **AL**: Aged mice, Lymph node samples  
+- **AT**: Aged mice, Tumor samples
+- **YL**: Young mice, Lymph node samples
+- **YT**: Young mice, Tumor samples
+
+**Treatment Conditions:**
+
+- Vehicle control (3 biological replicates per group)
+- PZ15227 treatment (3 biological replicates per group)
+
+## Data Generation and Processing
+
+**Sequencing**: 10X Genomics single-cell RNA sequencing with cell hashing and VDJ-B/T sequencing was performed on all samples.
+
+**Analysis Pipeline**: Raw sequencing data was processed through Cell Ranger Multi, followed by standard Seurat-based single-cell analysis including quality control, normalization, clustering, and cell type annotation. All sample groups were integrated using Harmony batch correction.
+
+**Input Dataset**: The integrated dataset contains **`r ncol(obj)`** high-quality cells across all conditions, with **`r sum(obj$has_bcr, na.rm = TRUE)`** BCR-positive B cells identified through VDJ sequencing.
+
+## Data Access
+
+Complete datasets, intermediate objects, and reproducible code are available at: https://data.rc.ufl.edu/secure/cancercenter-dept/zhangw/GE-8124/  
+Contact ([hkates@ufl.edu](mailto:hkates@ufl.edu)) for access credentials.
+
+# B Cell Population Analysis
+
+## Identifying B Cells Using VDJ Data
+
+B cells were identified using BCR (B cell receptor) information from the VDJ-B sequencing data. This approach is more specific than using gene expression markers alone, as it captures cells that have successfully undergone V(D)J recombination.
+
+```{r subset_bcells}
 b_cells <- subset(obj, subset = bcr_status == "BCR_positive")
 
-cat("Original object:", ncol(obj), "cells\n")
-cat("B cell subset (BCR+):", ncol(b_cells), "cells\n")
+cat("Original dataset:", ncol(obj), "cells\n")
+cat("B cells identified:", ncol(b_cells), "cells\n")
 cat("B cell percentage:", round(ncol(b_cells)/ncol(obj)*100, 2), "%\n")
 ```
 
-## Re-normalize and Re-cluster B Cells
+## Clustering B Cell Subpopulations
 
-This chunk performs standard Seurat workflow on the B cell subset to identify B cell subpopulations.
+Because B cells represent a heterogeneous population with distinct functional states, this subset was re-analyzed to identify B cell sub-populations with better resolution than in the full dataset including re-normalization, dimensionality reduction, and clustering.
 
-```{r recluster_bcells, echo=FALSE, message=FALSE, warning=FALSE}
-# Re-normalize and scale
+Multiple clustering resolutions (0.05-0.8) were tested, yielding 4-17 clusters. Resolution 0.1 was selected for producing 6 biologically interpretable clusters that capture major B cell functional states without over-clustering.
+
+```{r recluster_bcells,echo=TRUE,message=FALSE}
 b_cells <- NormalizeData(b_cells)
 b_cells <- FindVariableFeatures(b_cells, selection.method = "vst", nfeatures = 2000)
 b_cells <- ScaleData(b_cells)
-
-# Run PCA on B cell subset with B cell-specific variable features
 b_cells <- RunPCA(b_cells, features = VariableFeatures(object = b_cells))
-
-# Run Harmony for batch correction (standard practice even if PCA looks good)
 b_cells <- RunHarmony(b_cells, group.by.vars = "sample_id")
-
-# Run UMAP using Harmony dimensions
 b_cells <- RunUMAP(b_cells, reduction = "harmony", dims = 1:30)
-
-# Find clusters at multiple resolutions using harmony
-resolutions <- c(0.05,0.1, 0.2, 0.3, 0.5, 0.8)
+resolutions <- c(0.05, 0.1, 0.2, 0.3, 0.5, 0.8)
 b_cells <- FindNeighbors(b_cells, reduction = "harmony", dims = 1:30)
-for(res in resolutions) {
-  b_cells <- FindClusters(b_cells, resolution = res)
-}
 
-# Use resolution 0.1 
+# Store clustering results
+clustering_results <- data.frame(
+  Resolution = numeric(),
+  Number_of_Clusters = numeric()
+)
+
+invisible(capture.output({
+  for(res in resolutions) {
+    b_cells <- FindClusters(b_cells, resolution = res)
+    n_clusters <- length(unique(b_cells[[paste0("RNA_snn_res.", res)]][,1]))
+    clustering_results <- rbind(clustering_results, 
+                              data.frame(Resolution = res, 
+                                       Number_of_Clusters = n_clusters))
+  }
+}))
+
 Idents(b_cells) <- b_cells$RNA_snn_res.0.1
 b_cells$bcell_clusters <- Idents(b_cells)
 
-cat("Number of B cell clusters found:", length(levels(Idents(b_cells))), "\n")
+# Display results table
+knitr::kable(clustering_results, 
+             col.names = c("Resolution", "Number of Clusters"),
+             caption = "B Cell Clustering Results at Different Resolutions")
 ```
 
-## Visualize B Cell Clusters
+## B Cell Cluster Visualization
 
-This chunk creates UMAP visualizations of the B cell clusters and their distribution across conditions.
+The plots show the identified B cell subpopulations and how they are distributed across experimental conditions.
 
-```{r visualize_clusters, echo=FALSE, fig.width=15, fig.height=12}
-# UMAP plots
-p1 <- DimPlot(b_cells, reduction = "umap", label = TRUE, pt.size = 0.5) + 
+```{r visualize_clusters, fig.width=15, fig.height=12}
+p1 <- DimPlot(b_cells, reduction = "umap", label = TRUE, pt.size = 0.5) +
   ggtitle("B Cell Clusters")
 
-p2 <- DimPlot(b_cells, reduction = "umap", group.by = "age", pt.size = 0.5) + 
-  ggtitle("Age")
+p2 <- DimPlot(b_cells, reduction = "umap", group.by = "age", pt.size = 0.5) +
+  ggtitle("Age Groups")
 
-p3 <- DimPlot(b_cells, reduction = "umap", group.by = "treatment", pt.size = 0.5) + 
-  ggtitle("Treatment")
+p3 <- DimPlot(b_cells, reduction = "umap", group.by = "treatment", pt.size = 0.5) +
+  ggtitle("Treatment Conditions")
 
-p4 <- DimPlot(b_cells, reduction = "umap", group.by = "tissue", pt.size = 0.5) + 
-  ggtitle("Tissue")
+p4 <- DimPlot(b_cells, reduction = "umap", group.by = "tissue", pt.size = 0.5) +
+  ggtitle("Tissue Origin")
 
-# Additional plot showing BCR status
-p5 <- DimPlot(b_cells, reduction = "umap", group.by = "bcr_status", pt.size = 0.5) + 
-  ggtitle("BCR Status")
-
-# Combine plots
-combined_plot <- (p1 | p2) / (p3 | p4) / (p5 | plot_spacer())
+combined_plot <- (p1 | p2) / (p3 | p4)
 print(combined_plot)
 
-# Cluster composition by conditions
 cluster_composition <- b_cells@meta.data %>%
   group_by(bcell_clusters, age, tissue, treatment) %>%
   summarise(count = n(), .groups = 'drop') %>%
   group_by(bcell_clusters) %>%
   mutate(percentage = count/sum(count)*100)
 
-p6 <- ggplot(cluster_composition, aes(x = bcell_clusters, y = percentage, fill = interaction(age, treatment))) +
+p5 <- ggplot(cluster_composition, aes(x = bcell_clusters, y = percentage, fill = interaction(age, treatment))) +
   geom_bar(stat = "identity", position = "stack") +
   facet_wrap(~tissue) +
   theme_minimal() +
-  labs(title = "B Cell Cluster Composition by Age, Treatment, and Tissue",
-       x = "B Cell Cluster", y = "Percentage", fill = "Age.Treatment") +
+  labs(title = "B Cell Cluster Composition Across Experimental Conditions",
+       x = "B Cell Cluster", y = "Percentage", fill = "Age × Treatment") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-print(p6)
+print(p5)
 ```
 
-## Find Cluster Markers
+## B Cell Subpopulation Characterization
 
-This chunk identifies marker genes for each B cell cluster to help with annotation.
+To identify distinct B cell functional states, differential expression analysis was performed to find cluster-specific marker genes. These markers were then used to annotate clusters into biologically meaningful B cell subtypes.
 
-```{r find_markers, echo=FALSE, message=FALSE, warning=FALSE}
-# Find markers for all clusters
-cluster_markers <- FindAllMarkers(b_cells, only.pos = TRUE, min.pct = 0.25, 
+```{r find_markers, echo=FALSE, message=FALSE}
+cluster_markers <- FindAllMarkers(b_cells, only.pos = TRUE, min.pct = 0.25,
                                   logfc.threshold = 0.25, test.use = "wilcox")
-
-# Get top 5 markers per cluster
 top_markers <- cluster_markers %>%
   group_by(cluster) %>%
-  top_n(n = 5, wt = avg_log2FC) %>%
+  top_n(n = 10, wt = avg_log2FC) %>%
   arrange(cluster, desc(avg_log2FC))
 
-# Create proposed annotations based on the actual markers observed
-propose_bcell_annotation <- function(markers) {
-  marker_genes <- paste(markers, collapse = ", ")
-  
-  # Look for specific B cell subset markers in your data
-  if(any(c("Aicda") %in% markers)) {
-    return("Germinal center B cells")
-  } else if(any(c("Icos", "Cxcr6") %in% markers)) {
-    return("Activated B cells")
-  } else if(any(c("Pou2af2", "Zbtb32") %in% markers)) {
-    return("Memory-like B cells")
-  } else if(any(c("Ms4a8a", "Ifitm6") %in% markers)) {
-    return("Interferon-response B cells")
-  } else if(grepl("Igkv", markers[1])) {
-    # Different kappa light chain usage
-    if(grepl("Igkv1-", markers[1])) {
-      return("Kappa+ B cells (Igkv1 family)")
-    } else if(grepl("Igkv10-", markers[1])) {
-      return("Kappa+ B cells (Igkv10 family)")
-    } else if(grepl("Igkv14-", markers[1]) || grepl("Igkv17-", markers[1])) {
-      return("Kappa+ B cells (Igkv14/17 family)")
-    } else {
-      return("Kappa+ B cells")
-    }
-  } else if(grepl("Ighv", markers[1])) {
-    # Different heavy chain usage
-    if(grepl("Ighv1-", markers[1])) {
-      return("Heavy chain+ B cells (Ighv1 family)")
-    } else {
-      return("Heavy chain+ B cells")
-    }
-  } else if(grepl("Iglv", markers[1])) {
-    return("Lambda+ B cells")
-  } else {
-    return("B cell subset")
-  }
-}
+cluster_markers %>% downloadthis::download_this(
+      output_name = "BCells_ClusterMarkers",
+      output_extension = ".xlsx",
+      button_label = "Download B Cell Cluster Markers",
+      button_type = "primary",
+      has_icon = TRUE,
+      icon = "fa fa-download"
+    )
 
-# Apply updated annotations
-cluster_annotations <- top_markers %>%
+# Create summary table of top 3 markers per cluster
+top_marker_summary <- top_markers %>%
   group_by(cluster) %>%
+  slice_head(n = 3) %>%
   summarise(
-    top_markers = paste(gene[1:min(5, n())], collapse = ", "),
-    proposed_annotation = propose_bcell_annotation(gene[1:min(10, n())]),
+    top_3_markers = paste(gene, collapse = ", "),
+    avg_logfc_range = paste(round(range(avg_log2FC), 2), collapse = "-"),
     .groups = 'drop'
   )
 
-print(cluster_annotations)
+knitr::kable(top_marker_summary, 
+             col.names = c("Cluster", "Top 3 Markers", "Log2FC Range"),
+             caption = "Top Differential Expression Markers by Cluster")
 ```
 
-## Prepare Pseudobulk Data
+## Annotation Strategy: From Automated to Manual Curation
 
-This chunk aggregates single-cell data to pseudobulk for differential expression analysis.
+Initial attempts using automated reference-based annotation tools (SingleR, Azimuth) and predefined gene signature matching yielded inconsistent results with poor cluster resolution. Therefore, a manual curation approach was adopted using cluster-specific top markers and established B cell subtype signatures.
 
-```{r prepare_pseudobulk, echo=FALSE, message=FALSE, warning=FALSE}
-# Function to create pseudobulk data
-create_pseudobulk <- function(seurat_obj, group_vars) {
-  # Aggregate counts by specified grouping variables
-  pseudobulk_data <- AggregateExpression(
-    seurat_obj,
-    assays = "RNA",
-    slot = "counts",
-    group.by = group_vars,
-    return.seurat = FALSE
+## Manual Marker Visualization
+
+Key B cell subtype markers were visualized to assess cluster identity based on spatial expression patterns in the UMAP embedding.
+
+```{manual viz}
+# Cluster-specific top markers identified from differential expression
+cluster_specific_markers <- c("Vpreb3", "Ifit3", "Cd80", "Themis", "Camk1d", "Tnfsf13")
+available_cluster_markers <- cluster_specific_markers[cluster_specific_markers %in% rownames(b_cells)]
+
+actual_marker_plots <- lapply(available_cluster_markers, function(marker) {
+  FeaturePlot(b_cells, features = marker, pt.size = 0.5) +
+    ggtitle(paste(marker, "expression")) +
+    theme(plot.title = element_text(size = 10))
+})
+
+print(wrap_plots(actual_marker_plots, ncol = 3))
+
+# Create annotation rationale table
+annotation_rationale <- data.frame(
+  Cluster = 0:5,
+  Key_Marker = c("Vpreb3", "Ifit3", "Cd80", "Themis", "Camk1d", "Tnfsf13"),
+  Marker_Function = c(
+    "Pre-B cell receptor component",
+    "Interferon-induced antiviral",
+    "B cell activation/costimulation", 
+    "T cell selection/activation",
+    "Calcium signaling kinase",
+    "B cell survival factor"
+  ),
+  Biological_Context = c(
+    "B cell development",
+    "Antiviral response", 
+    "Classical activation",
+    "Alternative activation",
+    "Early development",
+    "Interferon signaling"
   )
-  
-  return(pseudobulk_data$RNA)
-}
+)
 
-# Create pseudobulk data grouped by cluster, age, treatment, tissue, and sample
-b_cells$group_id <- paste(b_cells$bcell_clusters, 
-                          b_cells$age, 
-                          b_cells$treatment, 
-                          b_cells$tissue, 
-                          b_cells$sample_id, 
-                          sep = "_")
-
-pseudobulk_data <- create_pseudobulk(b_cells, "group_id")
-
-# Create metadata for pseudobulk samples
-pseudobulk_meta <- b_cells@meta.data %>%
-  as_tibble() %>%  # Convert to tibble (removes row names)
-  select(group_id, bcell_clusters, age, treatment, tissue, sample_id) %>%
-  distinct() %>%
-  column_to_rownames("group_id")
-
-cat("Pseudobulk data dimensions:", dim(pseudobulk_data), "\n")
-cat("Number of pseudobulk samples:", nrow(pseudobulk_meta), "\n")
+knitr::kable(annotation_rationale,
+             caption = "Cluster Annotation Rationale Based on Key Markers")
 ```
 
-## Differential Expression Analysis
+### Final Manual Annotation
 
-This chunk performs pseudobulk differential expression analysis for each comparison and cluster.
+Based on the spatial expression patterns of cluster-specific markers and known B cell biology, clusters were manually annotated into functionally distinct subtypes.
 
-## Differential Expression Analysis
+```{r manual annotation}
+cluster_annotations_manual <- data.frame(
+  cluster = 0:5,
+  annotation = c(
+    "Transitional B cells",
+    "Interferon-stimulated B cells", 
+    "Activated B cells",
+    "Alternative activated B cells",
+    "Immature B cells",
+    "Type I IFN B cells"
+  ),
+  n_cells = as.numeric(table(b_cells$bcell_clusters)),
+  percentage = round(as.numeric(table(b_cells$bcell_clusters))/ncol(b_cells)*100, 1)
+)
 
-This chunk performs pseudobulk differential expression analysis for each comparison and cluster.
+b_cells$manual_annotation <- cluster_annotations_manual$annotation[match(b_cells$bcell_clusters, 
+                                                                        cluster_annotations_manual$cluster)]
 
-```{r differential_expression, echo=FALSE, message=FALSE, warning=FALSE}
-# First, let's add group_treatment to the pseudobulk metadata
-# Create new pseudobulk metadata using group_treatment
-b_cells$pseudobulk_id <- paste(b_cells$bcell_clusters, 
-                              b_cells$group_treatment, 
-                              b_cells$sample_id, 
+knitr::kable(cluster_annotations_manual, 
+             col.names = c("Cluster", "Manual Annotation", "Cell Count", "Percentage"),
+             caption = "Final B Cell Cluster Annotations and Cell Distributions")
+DimPlot(b_cells, group.by = "manual_annotation", label = TRUE, pt.size = 0.3, 
+        label.size = 3, repel = TRUE) +
+  ggtitle("Manually Annotated B Cell Subtypes") +
+  theme(legend.position = "right",
+        legend.text = element_text(size = 9))
+```
+
+## Download Loupe Browser File
+
+A .cloupe file was created from the Seurat object of subsetted re-analyzed B-cells to enable interactive visualization and explorattion in the 10X loupe browser. [Download re-clustered annotated B-cells](https://data.rc.ufl.edu/secure/cancercenter-dept/zhangw/GE-8124/integrated/objects/BCells_Analysis.cloupe)
+
+```{r create_loupe}
+loupe_metadata <- b_cells@meta.data
+loupe_metadata$Cluster <- paste0("Cluster_", loupe_metadata$bcell_clusters)
+loupe_metadata$Age_Treatment <- paste(loupe_metadata$age, loupe_metadata$treatment, sep = "_")
+loupe_metadata$Tissue_Age <- paste(loupe_metadata$tissue, loupe_metadata$age, sep = "_")
+
+cluster_ann_df <- cluster_annotations_manual %>%
+  mutate(cluster = as.character(cluster)) %>%
+  select(cluster, annotation)  # Change this line
+
+loupe_metadata <- loupe_metadata %>%
+  rownames_to_column("cell_id") %>%
+  left_join(cluster_ann_df, by = c("bcell_clusters" = "cluster")) %>%
+  column_to_rownames("cell_id")
+
+colnames(loupe_metadata) <- gsub(" ", "_", colnames(loupe_metadata))
+colnames(loupe_metadata) <- gsub("-", "_", colnames(loupe_metadata))
+
+b_cells@meta.data <- loupe_metadata
+
+tryCatch({
+  create_loupe_from_seurat(
+    b_cells,
+    output_name = "BCells_Analysis.cloupe",
+    force = TRUE
+  )
+  loupe_created <- TRUE
+}, error = function(e) {
+  loupe_created <- FALSE
+})
+```
+
+# Differential Expression Analysis
+
+## Experimental Comparisons
+
+Differential expression analysis was performed using the pseudobulk methodol, which aggregates cells within each sample before statistical testing. This approach properly accounts for biological replication by converting single-cell data to pseudobulk format by aggregating expression within each sample. This approach treats biological samples (not individual cells) as statistical units.and reduces false positives compared to cell-level testing.
+
+**The six comparisons are:**
+
+1. **Treatment effects in aged lymph node**: PZ15227 vs Vehicle in aged mice (lymph node)
+2. **Treatment effects in aged tumor**: PZ15227 vs Vehicle in aged mice (tumor)  
+3. **Treatment effects in young lymph node**: PZ15227 vs Vehicle in young mice (lymph node)
+4. **Treatment effects in young tumor**: PZ15227 vs Vehicle in young mice (tumor)
+5. **Age effects in lymph node**: Young vs Aged (vehicle-treated, lymph node)
+6. **Age effects in tumor**: Young vs Aged (vehicle-treated, tumor)
+
+```{r prepare_pseudobulk}
+b_cells$pseudobulk_id <- paste(b_cells$bcell_clusters,
+                              b_cells$group_treatment,
+                              b_cells$sample_id,
                               sep = "_")
 
-# Recreate pseudobulk data with the new grouping
 pseudobulk_data <- AggregateExpression(
   b_cells,
   assays = "RNA",
-  slot = "counts", 
+  slot = "counts",
   group.by = "pseudobulk_id",
   return.seurat = FALSE
 )$RNA
 
-# Create metadata for pseudobulk samples
 pseudobulk_meta <- b_cells@meta.data %>%
   select(pseudobulk_id, bcell_clusters, group_treatment, sample_id) %>%
   distinct() %>%
   remove_rownames() %>%
   column_to_rownames("pseudobulk_id")
 
-cat("Pseudobulk data dimensions:", dim(pseudobulk_data), "\n")
-cat("Number of pseudobulk samples:", nrow(pseudobulk_meta), "\n")
-
 colnames(pseudobulk_data) <- gsub("^g", "", colnames(pseudobulk_data))
 colnames(pseudobulk_data) <- gsub("-", "_", colnames(pseudobulk_data))
 
-# Function to run DESeq2 analysis using group_treatment directly
+cat("Expression matrix dimensions:", dim(pseudobulk_data), "\n")
+cat("Pseudobulk samples:", nrow(pseudobulk_meta), "\n")
+```
+
+## Statistical Analysis with DESeq2
+
+DESeq2 was used for differential expression testing on pseudobulk data. This method properly models the negative binomial distribution of RNA-seq count data and controls for multiple testing across genes.
+
+**Sample Size Requirements**: DESeq2 requires sufficient biological replicates to estimate gene-wise variance accurately. A minimum of 4 total samples are required per comparison, which allows for the missing YT_Vehicle_2 sample while maintaining statistical power.
+
+```{r differential_expression}
 run_deseq2_analysis <- function(counts, metadata, ref_group, test_group, cluster_num) {
-  
-  # Filter for specific cluster
   cluster_samples <- rownames(metadata)[metadata$bcell_clusters == cluster_num]
   if(length(cluster_samples) < 4) {
     return(NULL)
@@ -355,7 +424,6 @@ run_deseq2_analysis <- function(counts, metadata, ref_group, test_group, cluster
   cluster_counts <- counts[, cluster_samples]
   cluster_meta <- metadata[cluster_samples, ]
   
-  # Filter for comparison groups
   comparison_samples <- rownames(cluster_meta)[cluster_meta$group_treatment %in% c(ref_group, test_group)]
   if(length(comparison_samples) < 4) {
     return(NULL)
@@ -365,22 +433,18 @@ run_deseq2_analysis <- function(counts, metadata, ref_group, test_group, cluster
   final_meta <- cluster_meta[comparison_samples, ]
   final_meta$group_treatment <- factor(final_meta$group_treatment, levels = c(ref_group, test_group))
   
-  # Remove genes with low counts
   keep <- rowSums(final_counts >= 10) >= 2
   final_counts <- final_counts[keep, ]
   
-  # Create DESeq2 object
   dds <- DESeqDataSetFromMatrix(
     countData = final_counts,
     colData = final_meta,
     design = ~ group_treatment
   )
   
-  # Run DESeq2
   dds <- DESeq(dds, quiet = TRUE)
   res <- results(dds, contrast = c("group_treatment", test_group, ref_group))
   
-  # Convert to data frame and add cluster info
   res_df <- as.data.frame(res) %>%
     rownames_to_column("gene") %>%
     mutate(
@@ -393,35 +457,28 @@ run_deseq2_analysis <- function(counts, metadata, ref_group, test_group, cluster
   return(res_df)
 }
 
-# Define the 6 comparisons using group_treatment
 comparisons <- list(
   "Aged_Lymphnode_PZ15227_vs_Vehicle" = c("Aged_Lymph_node_Vehicle", "Aged_Lymph_node_PZ15227"),
-  "Aged_Tumor_PZ15227_vs_Vehicle" = c("Aged_Tumor_Vehicle", "Aged_Tumor_PZ15227"), 
+  "Aged_Tumor_PZ15227_vs_Vehicle" = c("Aged_Tumor_Vehicle", "Aged_Tumor_PZ15227"),
   "Young_Lymphnode_PZ15227_vs_Vehicle" = c("Young_Lymph_node_Vehicle", "Young_Lymph_node_PZ15227"),
   "Young_Tumor_PZ15227_vs_Vehicle" = c("Young_Tumor_Vehicle", "Young_Tumor_PZ15227"),
   "Young_vs_Aged_Lymphnode_Vehicle" = c("Aged_Lymph_node_Vehicle", "Young_Lymph_node_Vehicle"),
   "Young_vs_Aged_Tumor_Vehicle" = c("Aged_Tumor_Vehicle", "Young_Tumor_Vehicle")
 )
 
-# Run all comparisons
 all_results <- list()
 
 for(comp_name in names(comparisons)) {
   ref_group <- comparisons[[comp_name]][1]
   test_group <- comparisons[[comp_name]][2]
   
-  cat("Comparison:", comp_name, "\n")
-  cat("  Reference:", ref_group, "\n") 
-  cat("  Test:", test_group, "\n")
-  
-  # Run analysis for each cluster
   cluster_results <- list()
-  for(cluster in levels(b_cells$bcell_clusters)) {
+  for(cluster in unique(b_cells$bcell_clusters)) {
     result <- run_deseq2_analysis(
-      pseudobulk_data, 
-      pseudobulk_meta, 
-      ref_group, 
-      test_group, 
+      pseudobulk_data,
+      pseudobulk_meta,
+      ref_group,
+      test_group,
       cluster
     )
     if(!is.null(result)) {
@@ -431,123 +488,105 @@ for(comp_name in names(comparisons)) {
   
   if(length(cluster_results) > 0) {
     all_results[[comp_name]] <- do.call(rbind, cluster_results)
-    cat("  SUCCESS: Found results for", length(cluster_results), "clusters\n\n")
-  } else {
-    cat("  FAILED: No results found\n\n")
   }
 }
 
-cat("Completed differential expression analysis for", length(all_results), "comparisons\n")
+cat("Completed", length(all_results), "of", length(comparisons), "comparisons\n")
 ```
 
-## Create Excel Output with Results
+## Results Summary and Download
 
-This chunk creates a multi-sheet Excel file with all differential expression results and cluster annotations.
-
-```{r create_excel_output, echo=FALSE}
-# Create workbook
-wb <- createWorkbook()
-
-# Add cluster annotation sheet
-addWorksheet(wb, "Cluster_Annotations")
-writeData(wb, "Cluster_Annotations", cluster_annotations)
-
-# Add results for each comparison
-for(comp_name in names(all_results)) {
-  # Clean up sheet name (Excel has character limits)
-  sheet_name <- gsub("_", " ", comp_name)
-  sheet_name <- str_to_title(sheet_name)
-  
-  # Add cluster markers and annotations to results
-  results_with_annotations <- all_results[[comp_name]] %>%
-    left_join(cluster_annotations, by = c("cluster" = "cluster")) %>%
-    select(gene, cluster, log2FoldChange, padj, significant, comparison,
-           top_markers, proposed_annotation, everything())
-  
-  addWorksheet(wb, sheet_name)
-  writeData(wb, sheet_name, results_with_annotations)
-  
-  # Add conditional formatting for significant genes
-  conditionalFormatting(wb, sheet_name, 
-                        cols = which(names(results_with_annotations) == "significant"),
-                        rows = 2:(nrow(results_with_annotations) + 1),
-                        type = "equal", rule = "TRUE",
-                        style = createStyle(bgFill = "#90EE90"))
-}
-
-# Save workbook
-output_file <- "BCells_Differential_Expression_Results.xlsx"
-saveWorkbook(wb, output_file, overwrite = TRUE)
-
-cat("Excel file created:", output_file, "\n")
-cat("Number of sheets:", length(names(wb)), "\n")
-```
-
-## Download Results
-
-Click the button below to download the complete differential expression results.
-
-```{r create_and_download_results, echo=FALSE}
-# Add cluster annotations to each comparison result
+```{r create_and_download_results}
 results_with_annotations <- list()
 
-# Add cluster annotation sheet as first item
-results_with_annotations[["Cluster_Annotations"]] <- cluster_annotations
+results_with_annotations[["Cluster_Annotations"]] <- cluster_annotations_manual
 
-# Add results for each comparison with annotations
 for(comp_name in names(all_results)) {
-  # Clean up sheet name (Excel has character limits)
   sheet_name <- gsub("_", " ", comp_name)
   sheet_name <- str_to_title(sheet_name)
   
-  # Add cluster markers and annotations to results
-  annotated_results <- all_results[[comp_name]] %>%
-    left_join(cluster_annotations, by = c("cluster" = "cluster")) %>%
-    select(gene, cluster, log2FoldChange, padj, significant, comparison,
-           top_markers, proposed_annotation, everything())
+annotated_results <- all_results[[comp_name]] %>%
+  left_join(cluster_annotations_manual %>% mutate(cluster = as.character(cluster)), 
+            by = c("cluster" = "cluster")) %>%
+  select(gene, cluster, log2FoldChange, padj, significant, comparison,
+         annotation, n_cells, percentage, everything()) %>%
+  arrange(cluster, padj)
   
   results_with_annotations[[sheet_name]] <- annotated_results
 }
 
-cat("Prepared", length(results_with_annotations), "sheets for download\n")
-cat("Sheet names:", paste(names(results_with_annotations), collapse = ", "), "\n")
+options(shiny.maxRequestSize = 100*1024^2)
 
-# Create download button
-results_with_annotations %>% 
-  downloadthis::download_this(
-    output_name = "BCells_DE_Results",
-    output_extension = ".xlsx",
-    button_label = "Download B Cell Differential Expression Results",
-    button_type = "primary",
-    has_icon = TRUE,
-    icon = "fa fa-save"
-  )
+tryCatch({
+  results_with_annotations %>%
+    downloadthis::download_this(
+      output_name = "BCells_DE_Results_Complete",
+      output_extension = ".xlsx",
+      button_label = "Download B Cell DE Results",
+      button_type = "primary",
+      has_icon = TRUE,
+      icon = "fa fa-download"
+    )
+}, error = function(e) {
+  wb <- createWorkbook()
+  for(sheet_name in names(results_with_annotations)) {
+    addWorksheet(wb, sheet_name)
+    writeData(wb, sheet_name, results_with_annotations[[sheet_name]])
+  }
+  saveWorkbook(wb, "BCells_DE_Results_Complete.xlsx", overwrite = TRUE)
+})
 ```
 
-## Summary of Differential Expression Results
+## Analysis Summary
 
-This provides a summary of the analysis results when results across all clusters are combined for each contrast.
+Overview of differential expression results across all comparisons.
 
-```{r summary_stats, echo=FALSE}
-# Summary statistics
-summary_stats <- data.frame(
-  Comparison = names(all_results),
-  Total_Genes_Tested = sapply(all_results, function(x) length(unique(x$gene))),
-  Significant_Genes = sapply(all_results, function(x) sum(x$significant, na.rm = TRUE)),
-  Clusters_Analyzed = sapply(all_results, function(x) length(unique(x$cluster)))
-)
-
-print(summary_stats)
-
-# Plot summary
-p_summary <- summary_stats %>%
-  ggplot(aes(x = reorder(Comparison, Significant_Genes), y = Significant_Genes)) +
-  geom_col(fill = "steelblue", alpha = 0.7) +
-  coord_flip() +
-  theme_minimal() +
-  labs(title = "Number of Significant Genes per Comparison",
-       x = "Comparison", y = "Number of Significant Genes") +
-  theme(axis.text.y = element_text(size = 8))
-
-print(p_summary)
+```{r analysis_summary, fig.width=12, fig.height=6}
+if(length(all_results) > 0) {
+  summary_stats <- data.frame(
+    Comparison = names(all_results),
+    Total_Genes_Tested = sapply(all_results, function(x) length(unique(x$gene))),
+    Significant_Genes = sapply(all_results, function(x) sum(x$significant, na.rm = TRUE)),
+    Upregulated = sapply(all_results, function(x) sum(x$significant & x$log2FoldChange > 0, na.rm = TRUE)),
+    Downregulated = sapply(all_results, function(x) sum(x$significant & x$log2FoldChange < 0, na.rm = TRUE)),
+    Clusters_Analyzed = sapply(all_results, function(x) length(unique(x$cluster))),
+    stringsAsFactors = FALSE
+  )
+  
+  summary_stats$Comparison_Clean <- gsub("_", " ", summary_stats$Comparison)
+  summary_stats$Comparison_Clean <- gsub("vs", "vs.", summary_stats$Comparison_Clean)
+  
+  print(summary_stats[, c("Comparison_Clean", "Significant_Genes", "Upregulated", "Downregulated", "Clusters_Analyzed")])
+  
+  p_summary <- summary_stats %>%
+    ggplot(aes(x = reorder(Comparison_Clean, Significant_Genes), y = Significant_Genes)) +
+    geom_col(fill = "steelblue", alpha = 0.8, width = 0.7) +
+    coord_flip() +
+    theme_minimal() +
+    labs(title = "Significant Genes Identified Across Comparisons",
+         subtitle = "Genes with padj < 0.05 and |log2FC| > 0.5",
+         x = "Comparison", y = "Number of Significant Genes") +
+    theme(
+      axis.text.y = element_text(size = 10),
+      plot.title = element_text(size = 14, hjust = 0.5),
+      plot.subtitle = element_text(size = 12, hjust = 0.5)
+    )
+  
+  print(p_summary)
+  
+  cluster_summary <- do.call(rbind, all_results) %>%
+    group_by(cluster) %>%
+    summarise(
+      Total_Significant = sum(significant, na.rm = TRUE),
+      Avg_LogFC = mean(abs(log2FoldChange[significant]), na.rm = TRUE),
+      .groups = 'drop'
+    ) %>%
+    arrange(desc(Total_Significant))
+  
+  cat("Significant genes by B cell cluster:\n")
+  print(cluster_summary)
+  
+} else {
+  cat("No differential expression results available.\n")
+}
 ```
